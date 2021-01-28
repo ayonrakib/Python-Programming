@@ -1,0 +1,47 @@
+
+#testButton, #fadeInButton, #fadeOutButton, #fadeToggleButton{
+    padding: 10px 10px;
+    background-color: cadetblue;
+    margin-bottom: 10px;
+}
+#fadeInDiv, #fadeInDivSlow, #fadeInDivThreeSecond, #fadeOutDiv, #fadeOutDivSlow, #fadeOutDivThreeSecond, #fadeToggleDiv, #fadeToggleDivSlow, #fadeToggleDivThreeSecond{
+    height: 50px;
+    width: 50px;
+    margin-bottom: 10px;
+}
+#fadeInDiv, #fadeInDivSlow, #fadeInDivThreeSecond{
+    display: none;
+}
+#fadeInDiv, #fadeOutDiv, #fadeToggleDiv{
+    background-color: cadetblue;
+}
+#fadeInDivSlow, #fadeOutDivSlow, #fadeToggleDivSlow{
+    background-color:crimson;
+}
+#fadeInDivThreeSecond, #fadeOutDivThreeSecond, #fadeToggleDivThreeSecond{
+    background-color:greenyellow;
+}
+#animationBlock, #toggleBlock{
+    height: 100px;
+    width: 100px;
+    background-color: chocolate;
+    left: 250px;
+    position: relative;
+}
+.parentBlock{
+    width: 300px;
+    background-color: chocolate;
+    display: flex;
+    justify-content: flex-end;
+}
+.firstChildBlock{
+    width: 100px;
+    background-color:darkblue;
+}
+.secondChildBlock{
+    width: 50px;
+    background-color: darkviolet;
+}
+.parentBlock, .firstChildBlock{
+    height: 200px;
+}

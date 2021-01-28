@@ -1,0 +1,75 @@
+#alignCenter{
+    background-color: cadetblue;
+    text-align: center;
+}
+#playWindow{
+    /* text-align: center; */
+    background-color: darkolivegreen;
+    margin-top: 50px;
+    height: 500px;
+}
+#thirdSlot{
+    text-align: center;
+    background-color: darkseagreen;
+    height: 33%;
+    width: 100%;
+    display: inline-block;
+}
+#secondSlot{
+    text-align: center;
+    background-color: dimgray;
+    width: 35%;
+    display: inline-block;
+    height: 33%;
+}
+#cardPlayingWindow{
+    text-align: center;
+    background-color:khaki;
+    width: 29%;
+    display: inline-block;
+    height: 33%;
+}
+#fourthSlot{
+    text-align: center;
+    background-color:navajowhite;
+    width: 35%;
+    display: inline-block;
+    height: 33%;
+}
+#firstSlot{
+    text-align: center;
+    background-color:silver;
+    height: 33%;
+    width: 100%;
+    display: inline-block;
+}
+#reloadGame, #showCards{
+    text-align: center;
+}
+#firstSlotCardBlock, #secondSlotCardBlock, #thirdSlotCardBlock, #fourthSlotCardBlock{
+    display: inline-block;
+    background-color: crimson;
+    height: 80%;
+    width: 80%;
+    margin: 10px;
+}
+img{
+    vertical-align: middle;
+    margin-top: 6px;
+}
+#firstSlotFirstCard, #firstSlotSecondCard, #firstSlotThirdCard,#firstSlotFourthCard,#firstSlotFifthCard,#firstSlotSixthCard,#firstSlotSeventhCard,#firstSlotEightCard,
+#secondSlotFirstCard, #secondSlotSecondCard, #secondSlotThirdCard, #secondSlotFourthCard, #secondSlotFifthCard, #secondSlotSixthCard, #secondSlotSeventhCard, #secondSlotEightCard,
+#thirdSlotFirstCard, #thirdSlotSecondCard, #thirdSlotThirdCard, #thirdSlotFourthCard, #thirdSlotFifthCard, #thirdSlotSixthCard, #thirdSlotSeventhCard, #thirdSlotEightCard,
+#fourthSlotFirstCard, #fourthSlotSecondCard, #fourthSlotThirdCard, #fourthSlotFourthCard, #fourthSlotFifthCard, #fourthSlotSixthCard, #fourthSlotSeventhCard, #fourthSlotEightCard{
+    display: inline-block;
+}
+.logout{
+    text-decoration: none;
+    padding: 7px 7px;
+    background-color: rgb(10, 184, 190);
+    text-align: right;
+    color: black;
+}
+.logout:hover{
+    text-decoration: none;
+}

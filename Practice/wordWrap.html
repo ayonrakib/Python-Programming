@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        .paragraph, .paragraphBreakWord, .paragraphNormal, .paragraphInitial, .paragraphInherit{
+            border: 5px solid;
+            width: 250px;
+            height: 250px;
+            margin-bottom: 20px;
+        }
+        .paragraphBreakWord{
+            word-wrap: break-word;
+        }
+        .paragraphNormal{
+            word-wrap: normal;
+        }
+        .paragraphInitial{
+            word-wrap: initial;
+        }
+        .paragraphInherit{
+            word-wrap: inherit;
+        }
+        .flex-container {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 1px solid silver;
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            }
+
+        .nowrap  { 
+            -webkit-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            }
+
+        .wrap    { 
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            }  
+
+        .wrap li {
+            background: gold;
+            }
+
+        .wrap-reverse         { 
+            -webkit-flex-wrap: wrap-reverse;
+            flex-wrap: wrap-reverse;
+            } 
+
+        .wrap-reverse li {
+            background: deepskyblue;
+            }
+
+        .flex-item {
+            background: tomato;
+            padding: 5px;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            line-height: 100px;
+            color: white;
+            font-weight: bold;
+            font-size: 2em;
+            text-align: center;
+            }
+            .container {
+                margin-top: 100px;
+                /* display: flex; */
+                
+                /* flex-wrap: wrap-reverse; */
+                /* flex-flow:wrap-reverse; */
+                justify-content:safe;
+                text-align: center;
+                width: 500px;
+                height: 100px;
+                background-color: cadetblue;
+            }
+            .chocolate, .blue, .green, .yellow, .red{
+                /* order: 4; */
+                /* flex-grow: 4; */
+                display: inline-block;
+                width: 200px;
+                height: 50px;
+            }
+            .chocolate {
+                /* flex-shrink: 3; */
+                /* flex-basis: 100%; */
+                background-color: chocolate;
+            }
+            .blue {
+                background-color: blue;
+            }
+            .green {
+                background-color: green;
+            }
+            .yellow {
+                background-color: yellow;
+            }
+            .red {
+                background-color: red;
+            }
+
+    </style>
+</head>
+<body>
+    <!-- <div class="paragraph">
+        no text wrap
+        dfggfsdgfsdgfdsgfdgfdsgfdsgfdgfdgfdgfdsdfggfsdgfsdgfdsgfdgfdsgfdsgfdgfdgfdgfds asfdsa
+    </div>
+    <div class="paragraphBreakWord">
+        break word wrap
+        dfggfsdgfsdgfdsgfdgfdsgfdsgfdgfdgfdgfdsdfggfsdgfsdgfdsgfdgfdsgfdsgfdgfdgfdgfds adaf
+    </div>
+    <div class="paragraphNormal">
+        normal word wrap
+        dfggfsdgfsdgfdsgfdgfdsgfdsgfdgfdgfdgfdsdfggfsdgfsdgfdsgfdgfdsgfdsgfdgfdgfdgfds agfafs
+    </div>
+    <div class="paragraphInitial">
+        initial word wrap
+        dfggfsdgfsdgfdsgfdgfdsgfdsgfdgfdgfdgfdsdfggfsdgfsdgfdsgfdgfdsgfdsgfdgfdgfdgfds afgaf
+    </div>
+    <div class="paragraphInherit">
+        inherit word wrap
+        dfggfsdgfsdgfdsgfdgfdsgfdsgfdgfdgfdgfdsdfggfsdgfsdgfdsgfdgfdsgfdsgfdgfdgfdgfds agda
+    </div> -->
+    <!-- <ul class="flex-container nowrap">
+        <li class="flex-item">1</li>
+        <li class="flex-item">2</li>
+        <li class="flex-item">3</li>
+        <li class="flex-item">4</li>
+        <li class="flex-item">5</li>
+        <li class="flex-item">6</li>
+        <li class="flex-item">7</li>
+        <li class="flex-item">8</li>
+      </ul>
+      
+      <ul class="flex-container wrap">
+        <li class="flex-item">1</li>
+        <li class="flex-item">2</li>
+        <li class="flex-item">3</li>
+        <li class="flex-item">4</li>
+        <li class="flex-item">5</li>
+        <li class="flex-item">6</li>
+        <li class="flex-item">7</li>
+        <li class="flex-item">8</li>
+      </ul>
+      
+      <ul class="flex-container wrap-reverse">
+        <li class="flex-item">1</li>
+        <li class="flex-item">2</li>
+        <li class="flex-item">3</li>
+        <li class="flex-item">4</li>
+        <li class="flex-item">5</li>
+        <li class="flex-item">6</li>
+        <li class="flex-item">7</li>
+        <li class="flex-item">8</li>
+      </ul> -->
+      <div class="container">
+        <div class="chocolate">
+            1
+        </div>
+        <div class="blue">
+            2
+        </div>
+        <div class="green">
+            3
+        </div>
+        <div class="yellow">
+            4
+        </div>
+        <div class="red">
+            5
+        </div>
+      </div>
+</body>

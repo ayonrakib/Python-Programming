@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="D:/FlaskApplication/JavaScript.js">
+        </script>
+        <style>
+            .paragraph{
+                color: coral;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" onclick="sayHello()" value="Hey!">
+        <br>
+        <br>
+        <input type="button" onclick="showVariables()" value="Show Variables">
+        <br>
+        <br>
+        <input type="button" onclick="showMyName()" value="Show Name">
+        <br>
+        <br>
+        <input type="button" onclick="secondFunction()" value="change text">
+        <div id="para" class="paragraph">
+            This text will be changed.
+        </div>
+        <br>
+        <div class="onSubmitForm">
+            <form method="POST" action="/" onsubmit="return onSubmitForm()">
+                <input type="text">
+                <br> <br>
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    </body>
+</html>

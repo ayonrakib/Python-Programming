@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body{
+                font-family: 'Roboto Mono';
+            }
+            @font-face {
+                font-family: "Roboto Mono";
+                src: url('D:/FlaskApplication/static/roboto-mono-v12-latin-ext_latin/roboto-mono-v12-latin-ext_latin-regular.ttf') format('truetype');
+            }
+            .wholePage{
+                background-color: khaki;
+            }
+            .leftColumn{
+                width: 20%;
+                display: inline-block;
+                background-color: burlywood;
+                text-align: left;
+            }
+            .middleColumn{
+                display:inline-block;
+                width: 25%;
+                background-color:dimgray;
+                text-align: left;
+                vertical-align: top;
+                padding-left: 15px;
+            }
+            .photoColumn{
+                display: inline-block;
+                width: 52%;
+                background-color: green;
+                text-align: center;
+                vertical-align: top;
+            }
+            .instaLogo{
+                display: inline-block;
+                text-align: left;
+                margin-left: 20px;
+            }
+            .instaTitle{
+                display: inline-block;
+                margin-left: 18px;
+            }
+            .profilePicture{
+                margin-top: 50px;
+                background-color: indianred;
+                height: 30px;
+                text-align: center;
+            }
+            .location{
+                text-align: center;
+                
+                background-color: lawngreen;
+                font-size: 0.9rem;
+            }
+            .activity{
+                background-color: lightgray;
+                text-align: center;
+                border-style: groove none;
+                margin-top: 30px;
+            }
+            .postsBlock{
+                text-align: center;
+                background-color: lightsalmon;
+                display: inline-block;
+            }
+            .postsNumber{
+                text-align: center;
+                background-color:lime;
+                font-weight: bold;
+            }
+            .posts{
+                background-color: rgb(13, 190, 182);
+                color: palevioletred;
+            }
+            .followersBlock{
+                text-align: center;
+                background-color:pink;
+                display: inline-block;
+                vertical-align: top;
+                margin-left: 25px;
+                margin-bottom: 55px;
+            }
+            .followerNumber{
+                text-align: center;
+                background-color:snow;
+                vertical-align: top;
+            }
+            .followers{
+                text-align: center;
+                background-color:wheat;
+                vertical-align: top;
+                color: teal;
+            }
+            .followingBlock{
+                text-align: center;
+                background-color:seagreen;
+                display: inline-block;
+                vertical-align: top;
+                margin-left: 25px;
+            }
+            .followingNumber{
+                text-align: center;
+                background-color:palegreen;
+                vertical-align: top;
+                
+            }
+            .following{
+                text-align: center;
+                background-color:mediumseagreen;
+                vertical-align: top;
+                color: teal;
+            }
+            a{
+                background-color: burlywood;
+                text-align: left;
+                display: inline-block;
+                padding:0.6rem;
+                text-decoration: none;
+                color: gray;
+            }
+            a:active{
+                color: black;
+            }
+            a:visited{
+                color:black;
+            }
+            .menuBar{
+                text-align: left;
+                margin-left: 35px;
+            }
+            .menuBarLogo{
+                display: inline-block;
+                background-color:ivory;
+                width: 20px;
+            }
+            .menuBarText{
+                display: inline-block;
+                background-color:darkkhaki;
+                margin-left: 15px;
+            }
+            .backToPeopleBlock > a{
+                background-color: darkslategray;
+                padding:0px;
+            }
+            .profilePictureOfOther > img{
+                border-radius: 5%;
+                text-align: left;
+                margin-top: 55px;
+                margin-bottom: 55px;
+            }
+            .profileTitle{
+                display: inline-block;
+            }
+            .profileNameOfOther{
+                font-weight: bold;
+                display: inline-block;
+                font-size: 20px;
+            }
+            .verifiedLogo{
+                display: inline-block;
+            }
+            .othersPostNumber, .othersFollowingNumber, .favoriteTagsTitle, .activityOfOtherTitle, .locationOfOtherTitle, .favoriteProfilesTitle{
+                font-weight: bold;
+                display: inline-block;
+            }
+            .profileParagraph > p{
+                margin-top: 15px;
+            }
+            p{
+                margin:0px;
+                margin-bottom: 18px;
+                width: 310px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wholePage">
+            <div class="leftColumn">
+                <div class="instaLogo">
+                    instaLogo
+                </div>
+                <div class="instaTitle">
+                    Instagram
+                </div>
+                <div class="profilePicture">
+                    pro pic
+                </div>
+                <div class="location">
+                    New York, USA
+                </div>
+                <div class="activity">
+                    <div class="postsBlock">
+                        <div class="postsNumber">
+                            78
+                        </div>
+                        <div class="posts">
+                            Posts
+                        </div>
+                    </div>
+                    <div class="followersBlock">
+                        <div class="followerNumber">
+                            1.3k
+                        </div>
+                        <div class="followers">
+                            followers
+                        </div>
+                    </div>
+                    <div class="followingBlock">
+                        <div class="followingNumber">
+                            2k
+                        </div>
+                        <div class="following">
+                            following
+                        </div>
+                    </div>
+                    <div class="menuBar">
+                        <a href="www.google.com" target="_blank">
+                            <div class="menuBarLogo">
+                                <i class="fa fa-home"></i>
+                            </div>
+                            <div class="menuBarText">
+                                Feed
+                            </div>
+                        </a>
+                    </div>
+                    <div class="menuBar">
+                        <a href="www.google.com" target="_blank">
+                            <div class="menuBarLogo">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="menuBarText">
+                                Search
+                            </div>
+                        </a>
+                    </div>
+                    <div class="menuBar">
+                        <a href="www.google.com" target="_blank">
+                            <div class="menuBarLogo" style="visibility: hidden;">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="menuBarText">
+                                Trending Tags
+                            </div>
+                        </a>
+                    </div>
+                    <div class="menuBar">
+                        <a href="www.google.com" target="_blank">
+                            <div class="menuBarLogo" style="visibility: hidden;">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="menuBarText">
+                                Top Posts
+                            </div>
+                        </a>
+                    </div>
+                    <div class="menuBar">
+                        <a href="www.google.com" target="_blank">
+                            <div class="menuBarLogo" style="visibility: hidden;">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="menuBarText">
+                                People
+                            </div>
+                        </a>
+                    </div>
+                    <div class="menuBar">
+                        <a href="www.google.com" target="_blank">
+                            <div class="menuBarLogo">
+                                <i class="fa fa-bell"></i>
+                            </div>
+                            <div class="menuBarText">
+                                Notifications
+                            </div>
+                        </a>
+                    </div>
+                    <div class="menuBar">
+                        <a href="www.google.com" target="_blank">
+                            <div class="menuBarLogo">
+                                <i class="fa fa-caret-right"></i>
+                            </div>
+                            <div class="menuBarText">
+                                Direct
+                            </div>
+                        </a>
+                    </div>
+                    <div class="menuBar">
+                        <a href="www.google.com" target="_blank">
+                            <div class="menuBarLogo">
+                                <i class="fa fa-film"></i>
+                            </div>
+                            <div class="menuBarText">
+                                Stats
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="middleColumn">
+                <div class="backToPeopleBlock">
+                    <a href="www.google.com" target="_blank">
+                        <div class="menuBarLogo">
+                            <i class="fa fa-arrow-left"></i>
+                        </div>
+                        <div class="menuBarText">
+                            back to people
+                        </div>
+                    </a>
+                </div>
+                <div class="profilePictureOfOther">
+                    <img src="D:/FlaskApplication/static/pic.jpg" alt="Cinque Terre" width="310" height="300">
+                </div>
+                <div class="profileTitle">
+                    <div class="profileNameOfOther">
+                        Rakib Ayon
+                    </div>
+                    <div class="verifiedLogo">
+                        <i class="fa fa-check-circle"></i>
+                    </div>
+                    <br> <br>
+                    <div class="othersPostNumber">
+                        900 Photos  
+                    </div>
+                    <div class="othersFollowingNumber">
+                        16k Following 
+                    </div>
+                </div>
+                <div class="profileParagraph">
+                    <p style="width: 310px;">
+                        Windows PowerShell Copyright (C) Microsoft Corporation.All rights reserved.Try the new cross-platform PowerShell https://aka.ms/pscore6 
+                    </p>
+                </div>
+                <div class="favoriteTagsTitle">
+                    Favorite Tags
+                </div>
+                <p>
+                    swimming, cycling, biking, hiking, coding, eating, foodie
+                </p>
+                <div class="activityOfOtherTitle">
+                    Activity
+                </div>
+                <p>
+                    coder, foodie
+                </p>
+                <div class="locationOfOtherTitle">
+                    Location
+                </div>
+                <p>
+                    USA
+                </p>
+                <div class="favoriteProfilesTitle">
+                    Favorite Profiles
+                </div>
+            </div>
+            <div class="photoColumn">
+                photo column
+            </div>
+        </div>
+        
+    </body>
+</html>

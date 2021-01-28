@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-color:#e3e9e9;
+                margin: 0px;
+            }
+            ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                background-color:gray;
+                size: 300;
+                font-size: large;
+                text-align: center;
+            }
+            li{
+                display: inline-block;
+                position: relative;
+                border-right: 1px solid black;
+            }
+            li a{
+                display: block;
+                color:#000000;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            li a:hover:not(.active){
+                background-color:burlywood;
+            }
+            .title{
+                display: inline-block;
+                left: 30px;
+                font-weight: bold;
+                font-family:cursive;
+                font-style: italic;
+            }
+            input[type=text], select{
+                text-align: left;
+                display: inline-block;
+            }
+            .wholeBlock{
+                position: relative;
+                text-align: center;
+            }
+            .pictureBlock{
+                display: inline-block;
+                position: relative;
+                width: 220px;
+                /* background-color: palevioletred; */
+                height: 50%;
+            }
+            .picture{
+                border: 3px solid brown;
+                padding-top: 5px;
+            }
+            .profileBlock{
+                display: inline-block;
+                position: relative;
+                margin-left: 20px;
+                /* background-color: peru; */
+                vertical-align: top;
+                width: 500px;
+                text-align: left;
+            }
+            .profileNameBlock{
+                display: inline-block;
+                /* background-color: cadetblue; */
+                font-weight: bolder;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 22px;
+            }
+            .profileNameTextBlock{
+                display: inline-block;
+                /* background-color:darkslategray; */
+                width: 65%;
+                vertical-align: text-bottom;
+                margin-left: 15px;
+            }
+            .profileDescriptionBlock{
+                display: block;
+                /* background-color:darkslategray; */
+                height:100px;
+                margin-top: 10px;
+            }
+            .profileDetailsBlock{
+                margin-top: 10px;
+                /* background-color: crimson; */
+            }
+            textarea {
+                width: 100%;
+                height: 100px;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                /* background-color: #f8f8f8; */
+                font-size: 16px;
+                resize: vertical;
+            }
+            .profileDescriptionInputBox{
+                width: 100%;
+                height: 100px;
+            }
+            .profileDetailsLine{
+                margin-top: 8px;
+            }
+            .profileDetailsLine > .icon{
+                /* background-color: chartreuse; */
+                display: inline-block;
+                /* width: 20%; */
+            }
+            .profileDetailsLine > .label{
+                /* background-color:pink; */
+                display: inline-block;
+                margin-left: 5px;
+                /* width: 30%; */
+                width: 4.5rem;
+            }
+            .profileDetailsLine > .textBox{
+                /* background-color: saddlebrown; */
+                display: inline-block;
+                width: 45%;
+            }
+            .decisionBlock{
+                margin-top: 10px;
+            }
+            .submitButton{
+                display: inline-block;
+            }
+            .submitButton > a:link, a:visited{    
+                background-color: #df8601;
+                color: white;
+                padding: 10px 25px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .submitButton > a:hover, a:active {
+                background-color: red;
+            }
+            .cancelLink{
+                display: inline-block;
+            }
+            .cancelLink > a:link{
+                display: inline-block;
+                margin-left: 10px;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <div class="title li">
+                Rakib Ayon
+            </div>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/loginForm">Log in</a></li>
+        </ul>
+        <br> <br> 
+        <div class="wholeBlock">
+            <div class="pictureBlock">
+                <div class="picture">
+                    <img src="static\pic.jpg" alt="Mountains" width="203">
+                </div>
+                <div>
+                    Update Photo
+                </div>
+            </div>
+            <div class="profileBlock">
+                <div>
+                    <div class="profileNameBlock">
+                        Rakib Ayon
+                    </div>
+                    <div class= "profileNameTextBlock">
+                        <form>
+                            <input type="text" id="name" name="name" value="Rakib">
+                          </form>
+                    </div>
+                </div>
+                
+                
+                <div class="profileDescriptionBlock">
+                    <textarea>
+Hello. This is Rakib.
+                    </textarea>
+                </div>
+                
+                <div class="profileDetailsBlock">
+                    <div class="profileDetailsLine">
+                        <div class="icon">
+                            <img src="static\maps.png" alt="Mountains" width="15" height="15">
+                        </div>
+                        <div class="label">
+                            Location
+                        </div>
+                        <div class="textBox">
+                            <form>
+                                <input type="text" id="location" name="location" value="Dhaka">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="profileDetailsLine">
+                        <div class="icon">
+                            <img src="static\website.png" alt="Mountains" width="15" height="15">
+                        </div>
+                        <div class="label">
+                            Website
+                        </div>
+                        <div class="textBox">
+                            <form>
+                                <input type="text" id="website" name="website" value="www.google.com">
+                            </form>
+                        </div>
+                    </div>
+                        
+                        <div class="profileDetailsLine">
+                            <div class="icon">
+                                <img src="static\linkedin.png" alt="Mountains" width="15" height="15">
+                            </div>
+                            <div class="label">
+                                LinkedIn
+                            </div>
+                            <div class="textBox">
+                                <form>
+                                    <input type="text" id="linkedin" name="linkedin" value="www.linkedin.com/in/rakib-ayon/">
+                                </form>
+                            </div>
+                        </div>
+                   
+                        
+                        <div class="profileDetailsLine">
+                            <div class="icon">
+                                <img src="static\mail.png" alt="Mountains" width="15" height="15">
+                            </div>
+                            <div class="label">
+                                Email
+                            </div>
+                            <div class="textBox">
+                                <form>
+                                    <input type="text" id="email" name="email" value="ayonrakib@gmail.com">
+                                </form>
+                            </div>
+                        </div>
+                    
+                        <div class="decisionBlock">
+                            <div class="submitButton">
+                                <a href="/home">Save Profile</a>
+                            </div>
+                            <div class="cancelLink">
+                                <a href="/home">Cancel</a>
+                            </div>
+                        </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

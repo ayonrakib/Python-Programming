@@ -1,0 +1,61 @@
+.formBlock{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+.formInput{
+    margin: 10px 10px;
+    text-align: center;
+    background-color: darkcyan;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    vertical-align: middle;
+}
+#fruitList{
+    margin: 50px 50px;
+    text-align: center;
+    background-color:darkseagreen;
+    display: inline-block;
+    vertical-align: top;
+    font-size: large;
+    text-align: left;
+    padding: 0px 50px 0px 50px;
+}
+.text-center {
+    text-align: center!important;
+}
+body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+}
+.form-signin {
+    width: 100%;
+    padding: 15px;
+    margin: auto;
+}
+.bar{
+    background-color:darkslategrey;
+    width: 5px;
+    height: 200px;
+    display: inline-block;
+    text-align: center;
+    margin-left: 50px;
+    vertical-align: middle;
+}
+.form{
+    display: inline-block;
+    text-align: center;
+}
+button{
+    padding: 15px 25px;
+    background-color: darkcyan;
+}
+#fruitName, #crossIcon{
+    display: inline-block;
+    margin: 5px 5px;
+    text-align: center;
+}

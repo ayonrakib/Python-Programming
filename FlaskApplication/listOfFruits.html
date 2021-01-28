@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+          .margin{
+            margin: auto;
+            border: green 1px solid;
+            padding:30px;
+            display: inline-block;
+            position: relative;
+          }
+          .box-blue {
+            position: relative;
+            background: lightskyblue;
+            height: 100px;
+            width: 100px; 
+            display:inline-block;
+            top: 50px;
+          }
+
+          .box-orange {
+            position:static;
+            background: orange;
+            width: 100px;
+            height: 100px;
+            left: 125px;     
+            display:inline-block;
+          }
+
+          .box-black{
+            position:static; 
+            background: black;
+            width: 100px;
+            height: 100px;
+            left: 450px;        
+            display:block;
+            color: white;
+          }
+          .box-yello{
+            position:static; 
+            background:yellow;
+            width: 100px;
+            height: 100px;
+            left: 750px;        
+            display:block;
+            float: left;
+          }
+          .box-pink{
+            position: absolute;
+            background:pink;
+            width: 100px;
+            height: 100px;
+            left: 110px;        
+            display:inline-block;
+          }
+
+          .blue-square-container {
+            text-align: left;
+          }
+
+          .blue-square-static {
+            background-color: #0074D9;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+          }
+
+          .blue-square-relative {
+            position: relative;
+            background-color: #0074D9;
+            width: 100px;
+            height: 100px;
+            left: 150 px;
+            bottom: 100 px;
+            display: inline-block;
+          }
+
+          .green-square-container {
+              text-align: left;
+            }
+
+          .green-square {
+            background-color:#008000;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+          }
+          .purple-square{
+            background-color: purple;
+            height: 20px;
+            width: 20px;
+            display: inline-block;
+            top: 5px;
+            right: 5px;
+            position: absolute;
+          }
+          .black-square{
+            background-color:black;
+            height: 20px;
+            width: 20px;
+            display: inline-block;
+            top: 10px;
+            right: 10px;
+            position: absolute;
+          }
+          p{
+            text-align: center;
+            color: blue;
+            font-size: 50px;
+          }
+        #paragraph{
+          color: blue;
+        }
+        body{
+          background-image: url("/static/profilePicture.png");
+        }
+        .essay {
+          background-color: lightgrey;
+          /* height: 300px; */
+          width: 30 px;
+          border: 15px solid green;
+          padding: 50px;
+          margin: 20px;
+      }
+      .content-box {
+        box-sizing: content-box;
+      }
+      .padding-box {
+        box-sizing: padding-box;
+      }
+      .border-box {
+        box-sizing: border-box;
+      }
+
+      /* Pen Styling, unrelated to box-sizing */
+
+      .demo {
+        margin: 0 0 1rem 0;
+        padding: 1rem;
+        background: #eee;
+      }
+      h4 {
+        margin: 0 0 0.5rem 0;
+      }
+      .box[class*="box"] {
+        width: 300px;
+        padding: 20px;
+        background: #444;
+        color: white;
+        border: 10px solid red;
+        background-clip: content-box;
+        text-indent: 20px;
+      }
+      .image {
+        width: 100px;
+        height: 100px;
+      }
+      .paragraph {
+        border: 1px solid black;
+        padding: 10px;
+        width: 200px;
+        height: 500px;
+      }
+        </style>
+    </head>
+    <body>
+      <div class="margin">
+        <div class="box-blue">1</div>
+        <div class="box-orange">2</div>
+        <div class="box-black">3</div>
+        <div class="box-yello">4</div>
+        <div class="box-pink">5</div>
+      </div>
+      <br> <br> 
+      <div class="margin">
+        <div class="blue-square-container">
+          <div class="blue-square-static">
+            100
+          </div>
+          <div class="blue-square-relative">
+            200
+          </div>
+
+        </div>
+        <br>
+        <div class="green-square-container">
+          <div class="green-square">
+            300
+          </div>
+          <div class="green-square">
+            400
+          </div>
+          <div class="green-square">
+            500
+          </div>
+        </div>
+        <div class="purple-square">
+        </div>
+        <div class="black-square">
+        </div>
+      </div>
+      <p>
+        asd
+      </p>
+      <div id = "paragraph">
+        1
+      </div>
+      <div id = "paragraph">
+        2
+      </div>
+      <p id= "paragraph">
+        3
+      </p>
+      <p id = "paragraph">
+        4
+      </p>
+      <div class="essay">
+        adf
+      </div>
+      <section class="demo">
+        <h4>box-sizing: content-box;</h4>
+      <div class="box content-box">
+        content
+      </div>
+      </section>
+      
+      <section class="demo">
+      <h4>box-sizing: padding-box;</h4>
+      <div class="box padding-box">
+        content
+      </div>
+      </section>
+        
+      <section class="demo">  
+      <h4>box-sizing: border-box;</h4>
+      <div class="box border-box">
+        content
+      </div>
+      </section>
+      <div class="paragraph">
+        In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since. 'Whenever you feel like criticizing anyone,' he told me, 'just remember that all the people in this world haven't had the advantages that you've had.'
+        </div>
+        <br>
+        <div class="paragraph">
+          In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since. 'Whenever you feel like criticizing anyone,' he told me, 'just remember that all the people in this world haven't had the advantages that you've had.'
+          </div>
+    </body>
+</html>

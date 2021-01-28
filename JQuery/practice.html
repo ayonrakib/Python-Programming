@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="design.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js.js"></script>
+<script>
+// 1. source code theke source tree download kore
+// 2. ei source code theke DOPM tree banay
+// 3. erpore joto manipualtion kore browser, sob kore DOM tree er upore chole, source code er upore na
+// 4. so majhe moddhe JS file er getelem,entbyid pabe, majhe moddhe pabe na
+// 5. ei karonei jor kore document.ready te likhte hobe, jeno DOM tree ready howar pore getelementbyid korte paare 
+$(document).ready(function(){
+  $("p").on({
+    mouseenter: function(){
+      $(this).css("background-color", "lightgray");
+    },  
+    mouseleave: function(){
+      $(this).css("background-color", "lightblue");
+    }, 
+    dblclick: function(){
+      $(this).css("background-color", "yellow");
+    },
+    click: function(){
+        $(this).css("background-color", "red");
+    }
+  });
+  $("#fadeInButton").click( function(){
+      $("#fadeInDiv").fadeIn();
+      $("#fadeInDivSlow").fadeIn("slow");
+      $("#fadeInDivThreeSecond").fadeIn(3000);
+  });
+  $("#fadeOutButton").click( function(){
+      $("#fadeOutDiv").fadeOut();
+      $("#fadeOutDivSlow").fadeOut("slow");
+      $("#fadeOutDivThreeSecond").fadeOut(3000);
+  });
+  $("#fadeToggleButton").click( function(){
+      $("#fadeToggleDiv").fadeToggle();
+      $("#fadeToggleDivSlow").fadeToggle("slow");
+      $("#fadeToggleDivThreeSecond").fadeToggle(3000);
+  });
+  $("#animate").click(function(){
+      $("#animationBlock").animate({left: '20px',
+                                    width: '+=190px',
+                                    backgroundColor: 'blue'});
+  });
+  $("#toggle").click(function(){
+    $("#toggleBlock").animate({left: '200px',
+                               fontSize: '5rem'});
+  });
+  $("#testStringVsObject").click(function(){
+    var ayonString = "Ayon";
+    var ayonStringAsObect = new String("Ayon");
+    if(ayonString === ayonStringAsObect){
+      console.log("should return true");
+      document.getElementById("changeTextByTestingStringWithObject").innerHTML = true;
+    }
+    else{
+      console.log("should return false");
+      document.getElementById("changeTextByTestingStringWithObject").innerHTML = false;
+    }
+  });
+  $("#sliceString").click(function(){
+    var myAccomplishment = "I am learning HTML, CSS and JS now a days I     am happy";
+    // var mySuccess = myAccomplishment.replace(/am/g,"learn");
+    document.getElementById("putSlicedString").innerHTML = myAccomplishment.trim();
+  })
+  $("#manipulateNumbers").click(function(){
+    var a = 0.1;
+    var b = "0.2";
+    document.getElementById("getArithmaticOperationResult").innerHTML = Number.NEGATIVE_INFINITY;
+  });
+  // map2
+  // input: ekta list(inputArray), ekta function(manipulateNumber)
+  // return: newArray, proti ta element hobe inputArray er proti ta element er upore function apply korar pore return value
+  //    1. newArray
+  //    2. inputArray er sob index er jonno:
+  //      3. newArray te append(manipulateNumber(index, inputArray))
+  //    4. return newArray
+  function map2(inputArray, manipulateNumber){
+    newArray = [];
+    for(var index = 0; index < inputArray.length; index++){
+      newArray.push(manipulateNumber(index, inputArray));
+    }
+    return newArray;
+  }
+  $("#mapArray").click(function(){
+    map2([102,76,908],20);
+  });
+});
+</script>
+</head>
+<body>
+
+  <p>Click or move the mouse pointer over this paragraph.</p>
+
+  <button id = "fadeInButton">
+      Click this to see fade in effects!
+  </button>
+
+  <div id = "fadeInDiv">
+      
+  </div>
+  <div id = "fadeInDivSlow">
+      
+  </div>
+  <div id = "fadeInDivThreeSecond">
+      
+  </div>
+  <div>
+      <button id = "fadeOutButton">
+          Click here to see fade out button
+      </button>
+  </div>
+
+  <div id = "fadeOutDiv">
+      
+  </div>
+  <div id = "fadeOutDivSlow">
+      
+  </div>
+  <div id = "fadeOutDivThreeSecond">
+      
+  </div>
+
+  <div>
+      <button id = "fadeToggleButton">
+          Click here to see fade toggle button
+      </button>
+  </div>
+
+  <div id = "fadeToggleDiv">
+      
+  </div>
+  <div id = "fadeToggleDivSlow">
+      
+  </div>
+  <div id = "fadeToggleDivThreeSecond">
+      
+  </div>
+  <div>
+    <button id = "animate">
+      Animate
+    </button>
+  </div>
+
+  <div id = "animationBlock">
+
+  </div>
+  <button id = "toggle"> 
+    Toggle
+  </button>
+  <div id = "toggleBlock">
+    Change block
+  </div>
+  <br> <br>
+  <div class="parentBlock">
+    <div class="firstChildBlock">
+
+    </div>
+    <br>
+    <div class="secondChildBlock">
+
+    </div>
+  </div>
+  <div id="changeTextWithAjax">
+    This text will change with the click of the below button
+  </div>
+  <button id="ajaxActivation">
+    Change text
+  </button>
+  <br> <br>
+  <button id = "testStringVsObject">
+    Test String with Object
+  </button>
+  <div id = "changeTextByTestingStringWithObject">
+    This text will change
+  </div>
+  <br> <br>
+  <button id = "sliceString">
+    Get index from string
+  </button>
+  <div id = "putSlicedString">
+    This text will change
+  </div>
+  <br> <br>
+  <button id = "manipulateNumbers">
+    Manipulate numbers
+  </button>
+  <div id = "getArithmaticOperationResult">
+    This text will change
+  </div>
+  <br> <br>
+  <div id="mapArray">
+    The text will change
+  </div>
+
+
+</body>
+</html>

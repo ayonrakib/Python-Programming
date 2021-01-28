@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://kit.fontawesome.com/431701a28e.js" crossorigin="anonymous"></script>
+        <style>
+            
+            body{
+                background-color: #cfe0dd;
+                padding-top: 18px;
+            }
+            .firstBlock{
+                background-color: burlywood;
+                text-align: left;
+            }
+            .filterBlock{
+                text-align: center;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .filterText{
+                display: inline-block;
+                margin-left: 5px;
+                vertical-align: middle;
+            }
+            .filterPicture{
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .membershipBlock{
+                text-align: center;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .membershipBlock > .button{
+                background-color: #cbfcff;
+                border: none;
+                color: black;
+                padding: 21px 32px;
+                text-align: left;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+            }
+            .secondBlock{
+                
+                margin-top: 30px;
+                font-size: 30px;
+               
+            }
+            .leftBlock{
+                text-align: left;
+                display: inline-block;
+                
+                vertical-align: middle;
+            }
+            .rightBlock{
+                text-align: right;
+                float: right;
+                
+                vertical-align: middle;
+            }
+            .usersPicture{
+                
+                text-align: center;
+                display: inline-block;
+                width: 3rem;
+                vertical-align: middle;
+                
+            }
+            .totalUsers{
+                text-align: left;
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 25px;
+            }
+            .uploadLogo{
+                border-radius: 5px;
+                background-color: #35fcfc;
+                padding: 12px 12px;
+                text-align: left;
+                display: inline-block;
+                
+            }
+            .eyeLogo{
+                border-radius: 5px;
+                background-color: #35fcfc;
+                text-align: center;
+                display: inline-block;
+                padding: 12px;
+            }
+            .worldLogo{
+                border-radius: 5px;
+                background-color: #35fcfc;
+                text-align: center;
+                display: inline-block;
+                padding: 12px 12px;
+            }
+            .thirdBlock{
+                background-color: white;
+                font-family:sans-serif;
+                margin-top: 30px;
+                font-size: 15px;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th{
+                background-color: #1d3a47;
+                color: white;
+                border: #dddddd;
+                text-align: left;
+                padding: 10px 30px;
+            }
+            td{
+                border: 1px solid gray;
+                text-align: left;
+                padding: 10px 30px;
+            }
+            .userPicture{
+                display: inline-block;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .userName{
+                margin-left: 10px;
+                display: inline-block;
+            }
+            .filterBlock > a:link {
+                background-color: #07787c;
+                color: white;
+                padding: 14px 25px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+            }
+            .filterBlock > a:hover, a:active {
+                background-color: #067f8f;
+            }
+            .th > .i{
+                display: inline-block;
+            }
+            .usersNamePictureBlock{
+                display: inline-block;
+            }
+            .usersGroupActive{
+                background-color: #66da66;
+                border-radius: 5px;
+                display: inline-block;
+                padding: 4px 8px;
+                text-align: center;
+                margin-left: 6px;
+                vertical-align: middle;
+            }
+            .usersGroupTeam{
+                background-color:#19d68e;
+                border-radius: 5px;
+                display: inline-block;
+                padding: 4px 8px;
+                text-align: center;
+                margin-left: 6px;
+            }
+            .usersGroupPartner{
+                background-color:#2894af;
+                border-radius: 5px;
+                display: inline-block;
+                padding: 4px 8px;
+                margin-left: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="firstBlock">
+            <div class="filterBlock">
+                <a href="default.asp" target="_blank">
+                    <div class="filterPicture">
+                        <img src="\FlaskApplication\static\filter.png" alt="Cinque Terre" width="30" height="30">
+                    </div>
+                    <div class="filterText">
+                        Add Filter
+                    </div>
+                </a>
+            </div>
+            <div class="membershipBlock">
+                <a href="#" class="button">Memberships is bigger than: 0</a>
+            </div>
+        </div>
+        <div class="secondBlock">
+            <div class="leftBlock">
+                <div class="usersPicture">
+                    <i class="fas fa-users" style="font-size: 25px;"></i>
+                </div>
+                <div class="totalUsers">
+                    4/ <strong>55 </strong> Users
+                </div>
+            </div>
+            <div class="rightBlock">
+                <div class="uploadLogo">
+                    <a href="default.asp" target="_blank">
+                        <i class="fas fa-upload" style="font-size: 25px; color: black;"></i>
+                    </a>
+                    
+                </div>
+                <div class="eyeLogo">
+                    <a href="default.asp" target="_blank" style="text-decoration: none;">
+                        <div style="display: inline-block;">
+                            <i class="fas fa-eye" style="font-size: 25px; color: black;"></i>
+                        </div>
+                        <div style="display: inline-block;">
+                            <i class="fas fa-caret-down" style="font-size: 25px; color: black;"></i>
+                        </div>
+                    </a>
+                    
+                </div>
+                <div class="worldLogo">
+                    <a href="default.asp" target="_blank">
+                        <i class="fas fa-globe-africa" style="font-size: 25px; color: black;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="thirdBlock">
+            <table>
+                <tr>
+                  <th>USERNAME</th>
+                  <th>NAME</th>
+                  <th>USER GROUP</th>
+                  <th>MEMBERSHIPS <i class="fas fa-arrow-down i"></i></th>
+                  <th>MEMBER SINCE</th>
+                </tr>
+                <tr>
+                  <td style="width: 15rem;">
+                      <div class="userPicture">
+                        <img src="\FlaskApplication\static\city.jpg" alt="Cinque Terre" width="30" height="30">
+                      </div>
+                      <div class="userName">
+                          RakibAyon
+                      </div>
+                  </td>
+                  <td style="width: 12rem;">Rakib Hasan Ayon</td>
+                  <td style="padding: 8px 10px; width: 20rem">
+                    <div  class="usersGroupTeam" >
+                        team
+                    </div>
+                    <div  class="usersGroupActive" >
+                        Active
+                    </div>
+                  </td>
+                  <td style="width: 10rem;">15</td>
+                  <td style="width: 15rem;">16</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="userPicture">
+                            <img src="\FlaskApplication\static\city.jpg" alt="Cinque Terre" width="30" height="30">
+                        </div>
+                        <div class="userName">
+                            AyonHasanRakib
+                        </div>
+                    </td>
+                    <td>Ayon Rakib Hsan</td>
+                    <td style="padding: 8px 10px; width: 20rem">
+                        <div  class="usersGroupTeam" >
+                            team
+                        </div>
+                        <div  class="usersGroupActive" >
+                            Active
+                        </div>
+                      </td>
+                    <td>19</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="userPicture">
+                            picture
+                        </div>
+                        <div class="userName">
+                            username
+                        </div>
+                    </td>
+                    <td>21</td>
+                    <td style="padding: 8px 10px; width: 20rem">
+                        <div  class="usersGroupTeam" >
+                            team
+                        </div>
+                        <div  class="usersGroupPartner" >
+                            Partner
+                        </div>
+                      </td>
+                    <td>23</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="userPicture">
+                            picture
+                        </div>
+                        <div class="userName">
+                            username
+                        </div>
+                    </td>
+                    <td>25</td>
+                    <td style="padding: 8px 10px; width: 20rem">
+                        <div  class="usersGroupTeam" >
+                            team
+                        </div>
+                        <div  class="usersGroupPartner" >
+                            Partner
+                        </div>
+                      </td>
+                    <td>27</td>
+                    <td>28</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="userPicture">
+                            picture
+                        </div>
+                        <div class="userName">
+                            username
+                        </div>
+                    </td>
+                    <td>29</td>
+                    <td style="padding: 8px 10px; width: 20rem">
+                        <div  class="usersGroupTeam" >
+                            team
+                        </div>
+                        <div  class="usersGroupActive" >
+                            Active
+                        </div>
+                      </td>
+                    <td>31</td>
+                    <td>32</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="userPicture">
+                            picture
+                        </div>
+                        <div class="userName">
+                            username
+                        </div>
+                    </td>
+                    <td>33</td>
+                    <td>34</td>
+                    <td>35</td>
+                    <td>36</td>
+                </tr>
+              </table>
+        </div>
+    </body>
+</html>

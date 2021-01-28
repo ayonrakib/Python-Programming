@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="Jigsaw.js">
+        </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="Jigsaw.css">
+    </head>
+    <body>
+        <div id="destinationBlock1" onclick="setIconInPuzzle('destinationBlock1')">
+            destinationBlock1
+        </div>
+        <div id="destinationBlock2" onclick="setIconInPuzzle('destinationBlock2')">
+            destinationBlock2
+        </div>
+        <div id="sourceBlock1" onclick="setIconInVariable('sourceBlock1')">
+            <i class='fa fa-angle-double-right'></i>
+        </div>
+        <div id="sourceBlock2" onclick="setIconInVariable('sourceBlock2')">
+            <i class='fa fa-angle-double-down'></i>
+        </div>
+        <br> <br>
+        <div id="destinationBlock3" onclick="setIconInPuzzle('destinationBlock3')">
+            destinationBlock3
+        </div>
+        <div id="destinationBlock4" onclick="setIconInPuzzle('destinationBlock4')">
+            destinationBlock4
+        </div>
+        <div id="sourceBlock3" onclick="setIconInVariable('sourceBlock3')">
+            <i class='fa fa-angle-double-up'></i>
+        </div>
+        <div id="sourceBlock3" onclick="setIconInVariable('sourceBlock4')">
+            <i class='fa fa-angle-double-left'></i>
+        </div>
+        <br> <br>
+        <button onclick="restartGame()">Restart Game</button>
+    </body>
+</html>

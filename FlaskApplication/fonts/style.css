@@ -1,0 +1,18 @@
+@font-face{
+    font-family: 'Roboto Mono', monospace;
+    src: url(\FlaskApplication\fonts\roboto-mono-v12-latin-ext_latin-700italic.ttf) format('truetype');
+}
+@font-face{
+    font-family: 'Roboto Mono', monospace;
+    src: url(\FlaskApplication\fonts\roboto-mono-v12-latin-ext_latin-regular.ttf) format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+h1{
+    font-family: 'Roboto Mono', monospace;
+}
+p{
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-style: italic;
+}

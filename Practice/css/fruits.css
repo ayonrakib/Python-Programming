@@ -1,0 +1,35 @@
+body{
+    padding-top: 150px;
+}
+#submitButton{
+    margin-top: 20px;
+}
+.bar{
+    height: 200px;
+    width: 10px;
+    background-color: darkolivegreen;
+    margin: 0px;
+}
+#fruitBlock{
+    width: auto;
+    height: 50px;
+}
+.fruitLine{
+    background-color: darkviolet;
+}
+.crossIcon, .fruitNameBlock{
+    background-color: goldenrod;
+    display: inline-block;
+}
+.pushTextLeft{
+    text-align: left;
+    word-wrap: break-word;
+}
+.rightAlineInputAndSubmit{
+    display: flex;
+    justify-content: flex-end;
+}
+.alignBarMiddle{
+    display: flex;
+    justify-content: center;
+}

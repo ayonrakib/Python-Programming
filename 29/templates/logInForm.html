@@ -1,0 +1,20 @@
+{% include 'documentHeader.html' %}
+{% include 'loginBodyHeader.html' %}
+{% include 'loginFormHeader.html' %}
+{% include 'loginPageHeader.html' %}
+{% if 'login failed' in loginfailed %}
+    {% include 'authenticateUserError.html' %}
+    {% include 'emailBlock.html' %}
+    {% include 'passwordBlock.html' %}
+    {% include 'button.html' %}
+    {% include 'newAccountDirectLink.html' %}
+    {% include 'loginFormFooter.html' %}
+    {% include 'bodyFooter.html' %}
+{% elif '' in loginfailed %}
+    {% include 'emailBlock.html' %}
+    {% include 'passwordBlock.html' %}
+    {% include 'button.html' %}
+    {% include 'newAccountDirectLink.html' %}
+    {% include 'loginFormFooter.html' %}
+    {% include 'bodyFooter.html' %}
+{% endif %}

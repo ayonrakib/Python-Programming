@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background: #fff8dc;
+                color:#006400;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }            
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>User Form</h1>
+            Please insert the following fields:
+            <form action="/output" method="POST">
+                <label for="fName">First Name:</label><br>
+                <input type="text" id="fName" name="fName" required><br>
+                <label for="lName">Last Name:</label><br>
+                <input type="text" id="lName" name="lName" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="pwd">Password:</label><br>
+                <input type="password" id="pwd" name="pwd" minlength="6" required><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>
