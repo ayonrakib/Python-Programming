@@ -87,14 +87,14 @@ def registrationSuccessful():
 
 
 def setCurrentSession(currentSession, email):
+    currentUser = User.get(User.email == email)
     if currentSession == "":
-        currentSession = request.cookies.get('currentSession')
-        currentUser = User.get(User.currentSession == currentSession)
+        print(currentUser)
         currentUser.currentSession = ""
         currentUser.save()
     else:
-        currentUser = User.get(User.email == email)
         currentUser.currentSession = currentSession
+        print(currentUser.currentSession)
         currentUser.save()
 
 
@@ -125,7 +125,8 @@ def homePage():
 
 @app.route('/logout')
 def logOut():
-    setCurrentSession("", "")
+    email = request.cookies.get('email')
+    setCurrentSession("", email)
     response = make_response(redirect(url_for('logIn')))
     response.set_cookie('email', expires=0)
     response.set_cookie('currentSession', expires=0)
