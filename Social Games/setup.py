@@ -10,7 +10,7 @@ databaseConnection = DatabaseConnection.getConnection()
 userController = UserController()
 
 # jokhon table banabo, create_tables function er input hobe list of Class objects
-databaseConnection.create_tables([GameTable])
+# databaseConnection.create_tables([GameTable])
 # salt = str(os.urandom(20))
 # currentSession = str(os.urandom(20))
 
