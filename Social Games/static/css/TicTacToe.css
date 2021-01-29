@@ -1,3 +1,6 @@
+/* kono kisur jonno special design hoile oitar jonno specific class banabo. generic class dile
+   sob gula element ei same design apply hobe, so kheyal rakhte hobe */
+
 body{
     background-color: rgb(39, 206, 218);
     padding-top: 50px;
@@ -16,9 +19,5 @@ body{
     vertical-align: top;
 }
 .loginPic{
-    justify-content: center;
-}
-.friendList{
-    display: flex;
     justify-content: center;
 }

@@ -48,7 +48,7 @@ def home():
 def logIn():
     currentSession = request.cookies.get('currentSession')
     if currentSession is None:
-        return render_template('loginForm.html',
+        return render_template('user/loginForm.html',
                                 action = "authenticate", 
                                 pageHeader = "Sign In",
                                 errorMessage = "",
@@ -59,7 +59,7 @@ def logIn():
 
 @app.route('/userRegistration')
 def userRegistration():
-    return render_template('userRegistration.html', 
+    return render_template('user/userRegistration.html', 
                             action = "validateRegistration", 
                             pageHeader = "Register", 
                             userFound = "",
@@ -73,14 +73,14 @@ def registrationSuccessful():
         password = request.form['password']
         foundUser = userController.findUserByEmail(email)
         if foundUser == "User found":
-            return render_template('userRegistration.html',
+            return render_template('user/userRegistration.html',
                                     action = "validateRegistration", 
                                     pageHeader = "Register", 
                                     userFound = "User Found",
                                     buttonValue = "Register")
         elif foundUser == "User Not found":
             userController.createUserFromRegistrationForm(email, password)
-            return render_template('newUserCreated.html',
+            return render_template('user/newUserCreated.html',
                                     action="playgame",
                                     pageHeader="Click to Play game",
                                     buttonValue="Play Game")
@@ -120,9 +120,14 @@ def authenticate():
 
 @app.route('/homepage')
 def homePage():
-    return render_template('friendlist/homepage.html')
+    return render_template('commons/homepage.html')
 
 
+@app.route('/friends')
+def friends():
+    return render_template('commons/friends.html')
+
+    
 @app.route('/logout')
 def logOut():
     email = request.cookies.get('email')

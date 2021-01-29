@@ -1,0 +1,72 @@
+{% include 'commons/head.html' %}
+{% include 'commons/pageHeader.html' %}
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-4 col-lg-4 order-md-last">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="friendName" placeholder="User name or id">
+                    </div>
+                    <div class="col-sm-2">
+        
+                    </div>
+                    <div class="col-sm-5">
+                        <button type="button" id="searchFriend" class="w-90 btn btn-sm btn-primary">Search Friend</button>
+                    </div>
+                </div>
+                <div id="friends">
+
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <div class="row">
+                    <h3>My friends</h3>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 friendLine">
+                        <img src="/images/29.png" height="60px" width="60px" style="border-radius: 30px;">
+                    </div>
+                    <div class="col-sm-5 friendLine">
+                        <div>
+                            Rakib Hasan Ayon
+                        </div>
+                        <div>
+                            Boston, MA
+                        </div>
+                    </div>
+                    <div class="col-sm-5 friendLine">
+                        <button type="button" class="w-50 btn btn-sm btn-primary">Remove Friend</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <img src="/images/29.png" height="60px" width="60px" style="border-radius: 30px;">
+                    </div>
+                    <div class="col-sm-5">
+                        <div>
+                            Rakib Hasan Ayon
+                        </div>
+                        <div>
+                            Boston, MA
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <button type="button" class="w-50 btn btn-sm btn-primary">Remove Friend</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <div class="row">
+                    <h3>Pending requests</h3>
+                </div>
+                <div class="row">
+
+                </div>
+            </div>
+
+
+    </div>
+{% include 'commons/pageFooter.html' %}
+{% include 'commons/footer.html' %}
+
+<!-- pending friend request thakbe -->
