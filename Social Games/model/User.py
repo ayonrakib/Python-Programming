@@ -5,6 +5,8 @@ class User(peewee.Model):
     id = peewee.AutoField()
     email = peewee.CharField(unique=True)
     password = peewee.CharField()
+    firstName = peewee.CharField()
+    lastName = peewee.CharField()
     currentSession = peewee.CharField()
     salt = peewee.CharField()
     class Meta:
@@ -52,3 +54,11 @@ class User(peewee.Model):
 
     def getSalt(self):
         return self.salt
+
+    
+    def getFirstName(self):
+        return self.firstName
+
+
+    def getLastName(self):
+        return self.lastName

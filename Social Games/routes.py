@@ -71,6 +71,8 @@ def registrationSuccessful():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
+        firstName = request.form['firstName']
+        lastName = request.form['lastName']
         foundUser = userController.findUserByEmail(email)
         if foundUser == "User found":
             return render_template('user/userRegistration.html',
@@ -79,7 +81,7 @@ def registrationSuccessful():
                                     userFound = "User Found",
                                     buttonValue = "Register")
         elif foundUser == "User Not found":
-            userController.createUserFromRegistrationForm(email, password)
+            userController.createUserFromRegistrationForm(email, password, firstName, lastName)
             return render_template('user/newUserCreated.html',
                                     action="playgame",
                                     pageHeader="Click to Play game",
@@ -127,7 +129,7 @@ def homePage():
 def friends():
     return render_template('commons/friends.html')
 
-    
+
 @app.route('/logout')
 def logOut():
     email = request.cookies.get('email')

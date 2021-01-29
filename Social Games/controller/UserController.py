@@ -47,10 +47,10 @@ class UserController():
             return "User Not found"
 
 
-    def createUserFromRegistrationForm(self, email, password):
+    def createUserFromRegistrationForm(self, email, password, firstName, lastName):
         salt = str(os.urandom(20))
         currentSession = str(os.urandom(20))
-        user = User.create(email = email, password = self.hashPassword(password, salt), salt = salt, currentSession = currentSession)
+        user = User.create(email = email, firstName = firstName, lastName = lastName, password = self.hashPassword(password, salt), salt = salt, currentSession = currentSession)
         return user
 
 
