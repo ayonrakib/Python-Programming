@@ -10,6 +10,8 @@ import os
 databaseConnection = DatabaseConnection.getConnection()
 userController = UserController()
 
+# userController.findUsersWithEmail('ayo')
+
 # jokhon table banabo, create_tables function er input hobe list of Class objects
 # databaseConnection.create_tables([User, Friends, GameTable, MatchTable])
 # salt = str(os.urandom(20))
@@ -26,3 +28,6 @@ userController = UserController()
 
 # user4 = User.create(email = 'saad@gmail.com', firstName = "Saad", lastName = "Manzur",salt = salt, password = userController.hashPassword("password", salt), currentSession = "")
 # user4.save()
+
+# user5 = User.create(email = 'ayonrakib@gmail.com', firstName = "Rakib", lastName = "Ayon", salt = salt, password = userController.hashPassword("password", salt), currentSession = "")
+# user5.save()

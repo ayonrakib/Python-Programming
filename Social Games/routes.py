@@ -137,8 +137,13 @@ def friends():
 @app.route('/getfriends')
 def getFrinds():
     name = request.args.get('name')
-    print(name)
-    return "[eva, ayon]"
+    return f"""
+    <!DOCTYPE HTML>
+    <head>
+    </head>
+    <body>
+     {userController.findUsersWithEmail(name)}
+     </body> """
     
 
 @app.route('/logout')

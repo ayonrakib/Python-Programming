@@ -9,6 +9,11 @@ $(document).ready(function(){
             url: '/getfriends',
             data: {name: friendName}
         }).done(function(response){
+            var friends = "";
+            
+            // for(var index = 0; index < response.length; index++){
+            //     friends += "a";
+            // }
             console.log(response);
         });
     });

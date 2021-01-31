@@ -54,6 +54,16 @@ class UserController():
         return user
 
 
+    def findUsersWithEmail(self, friendName):
+        userModels = User.select().where(User.email.contains(friendName))
+        users = []
+        for user in userModels:
+            fullName = user.firstName + " " + user.lastName
+            print(fullName)
+            users.append(fullName)
+        return users
+
+
 # userController = UserController()
 # print(userController.authenticateUser("rakib@gmail.com","password"))
 # databaseConnection.create_tables([User])
