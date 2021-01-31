@@ -8,14 +8,15 @@
 
 $(document).ready(function(){
     $("#changeText").click(function(){
-        $.ajaxSetup({url: "text/sampleText.txt", success: function(result){
+        $.ajaxSetup({url: "textfile", success: function(result){
             $("#changeTextWithAjax").html(result);
+            console.log(result);
         }});
         $.ajax();
     })
 })
 
-// readystae = 1 -> pathaise kina
+// readystate = 1 -> pathaise kina
 // 2 -> erokom kisu
 // 3 -> erokom kisu
 // 4 -> erokom kisu

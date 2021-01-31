@@ -48,12 +48,12 @@ def home():
 def logIn():
     currentSession = request.cookies.get('currentSession')
     if currentSession is None:
-        return render_template('user/loginForm.html',
+        return render_template('user/page-login.html',
                                 action = "authenticate", 
                                 pageHeader = "Sign In",
                                 errorMessage = "",
                                 buttonValue = "Sign In")
-    response = redirect(url_for('searchFriends'))
+    response = redirect(url_for('friends'))
     return response
 
 
@@ -125,10 +125,21 @@ def homePage():
     return render_template('commons/homepage.html')
 
 
-@app.route('/friends')
+@app.route('/friends', methods = ['GET'])
 def friends():
-    return render_template('commons/friends.html')
+    if request.method == 'GET':
+        name = request.form.get('friendName')
+        print(name)
+        return render_template('friends/page.html')
 
+
+
+@app.route('/getfriends')
+def getFrinds():
+    name = request.args.get('name')
+    print(name)
+    return "[eva, ayon]"
+    
 
 @app.route('/logout')
 def logOut():
@@ -159,3 +170,21 @@ if __name__ == "__main__":
 # list of user pabo. sheita user ke show korbo ajax diye, page reload hobe na
 # temporary div e search result show korbo. she jeita select korbe, sheita ke friend req pathabo
 # pathaile-table lagbe, userId, friendId naam e field thakbe, status-requested/accepted/rejected naam e value thakbe
+
+# jokhon amra ekta link visit kori, oita ekta get request, ta pic hok css js hok sob e get. sob e http protocol e, data read kortesi so get
+# server e data pathacchi na, jodio url er part hishebe kichu query pathano jaay
+
+
+# sobgula page er aage ami ekta kore prefix lagabo, e.g.-loginform er jaygay ami likhsi page-login karon oita loginForm na.
+# so, sobkhetrei tai korbo, shudhu page-xxx likhbo. form er khetre form-xxx likhbo. jeigula form o na page o na oigula block-xxx/ section-xxx
+# client server architecture e, client jane na DB bole kisu ase kina. client request POST korbe, server response pathabe, client oita GET kore
+
+# server e request korte hoile 3 ta jinish laage: 
+# 1. url, kothay request korbe
+# 2. method: kisu bola na thakle default GET. GET hoile data post kora jaay na. POSt hoile body te pathay. request er 2 ta part: hearder and body/
+# POST hoile Body te pathay
+# 3. Data: name value pairs
+# 
+# ajker task:
+# notes review kore bujhaite hobe done() kiavbe kaaj kortese step by step. ready and onclick er way te done() kivabe kaaj kore bujhaite hobe
+#  ei ajax diye sample request. server e friend name pathabo, oi url simple ekta value return korbe: "got the name"
