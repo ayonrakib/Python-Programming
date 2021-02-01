@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, make_response, redirect, url_for
+from flask import Flask, render_template, request, make_response, redirect, url_for, jsonify
 import mysql.connector as mysql
 import hashlib, binascii, peewee
 from library.DatabaseConnection import DatabaseConnection
@@ -137,13 +137,7 @@ def friends():
 @app.route('/getfriends')
 def getFrinds():
     name = request.args.get('name')
-    return f"""
-    <!DOCTYPE HTML>
-    <head>
-    </head>
-    <body>
-     {userController.findUsersWithEmail(name)}
-     </body> """
+    return jsonify(userController.findUsersWithEmail(name))
     
 
 @app.route('/logout')
