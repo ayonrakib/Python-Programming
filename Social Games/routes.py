@@ -135,9 +135,17 @@ def friends():
 
 
 @app.route('/getfriends')
-def getFrinds():
+def getFriends():
     name = request.args.get('name')
-    return f"{userController.findUsersWithEmail(name)}"
+    currentSession = request.cookies.get('currentSession')
+    return f"{userController.findUsersWithEmail(name, currentSession)}"
+
+
+@app.route('/remove')
+def removefriends():
+    userWhoRemoved = request.args.get('userWhoRemoved')
+    userToBeRemoved = request.args.get('userToBeRemoved')
+    return f"{[userWhoRemoved, userToBeRemoved]}"
     
 
 @app.route('/logout')

@@ -54,13 +54,26 @@ class UserController():
         return user
 
 
-    def findUsersWithEmail(self, friendName):
+    # findUsersWithEmail
+    # input: friendName, sessionid
+    # return: friends list except logged in user
+    # method:
+    #   1. userModels hobe User table er sob user jader email e friendName substring thake
+    #   2. curentUser hobe jei user er currentSession= sessionId
+    #   3. users
+    #   4. userModels er sob user er jonno:
+    #       1. jodi user.email and currentUser.email soman na hoy:
+    #           1. fullName = user.firstName + " " + user.lastName
+    #           2. users e append fullName
+    #   5. return users
+    def findUsersWithEmail(self, friendName, currentSession):
         userModels = User.select().where(User.email.contains(friendName))
+        currentUser = User.get(User.currentSession == currentSession)
         users = []
         for user in userModels:
-            fullName = user.firstName + " " + user.lastName
-            print(fullName)
-            users.append(fullName)
+            if user.email != currentUser.email:
+                fullName = user.firstName + " " + user.lastName
+                users.append(fullName)
         return users
 
 
