@@ -137,7 +137,7 @@ def friends():
 @app.route('/getfriends')
 def getFrinds():
     name = request.args.get('name')
-    return jsonify(userController.findUsersWithEmail(name))
+    return f"{userController.findUsersWithEmail(name)}"
     
 
 @app.route('/logout')

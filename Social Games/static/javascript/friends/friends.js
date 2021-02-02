@@ -1,23 +1,32 @@
 $(document).ready(function(){
+    // searchFriend id te click er function
+    // input: none
+    // return: none, just replace with the found users
+    // method:
+    //  1. friendName input er val read korbo
+    //  2. ajax method:
+    //      1. input: method: get, url: getfriends, data:{name:friendName}
+    //  3. ei method er return value er jonno done method call
+    //  4. input: function definition with the response value from the server
+    //      1. friendsBlock hobe row header, 1st column header, image and columnend
+    //      2. friends empty string
+    //      3. response object(eval(response)) er len porjonto iterate:
+    //          1. friends += friendsBlock + column shuru + response
     $("#searchFriend").click(function(){
         var friendName = $('#friendName').val();
-        // document.getElementById("friends").innerHTML = rowBlockHeader() + columnHeader() + imageBlock() + columnFooter() + columnHeader() + firstNameBlock() + " " + lastNameBlock()+ columnFooter() + columnHeader() + addFriendButton() + columnFooter() + rowBlockFooter();
-        // console.log(friendName);
-        // $('#friendName').val('eva');
         $.ajax({
             method: 'GET',
             url: '/getfriends',
             data: {name: friendName}
         }).done(function(response){
+            var friendsBlock = rowBlockHeader() + columnHeader() + imageBlock() + columnFooter();
             var friends = "";
-            
-            // for(var index = 0; index < response.length; index++){
-            //     friends += "a";
-            // }
-            console.log(JSON.parse(response));
-            $("#friends").html(JSON.stringify(response));
-            
+            for(var index = 0; index < eval(response).length; index++){
+                friends += friendsBlock + columnHeader() + eval(response)[index] + columnFooter() + columnHeader() + addFriendButton() + columnFooter() + rowBlockFooter();
+            }
+            $('#friends').html(friends);
         });
+        
     });
 });
 

@@ -29,5 +29,5 @@ userController = UserController()
 # user4 = User.create(email = 'saad@gmail.com', firstName = "Saad", lastName = "Manzur",salt = salt, password = userController.hashPassword("password", salt), currentSession = "")
 # user4.save()
 
-# user5 = User.create(email = 'ayonrakib@gmail.com', firstName = "Rakib", lastName = "Ayon", salt = salt, password = userController.hashPassword("password", salt), currentSession = "")
+# user5 = User.create(email = 'ayonrakib@gmail.com', firstName = "Rakib Hasan", lastName = "Ayon", salt = salt, password = userController.hashPassword("password", salt), currentSession = "")
 # user5.save()
