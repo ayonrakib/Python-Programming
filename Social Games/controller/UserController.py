@@ -1,9 +1,13 @@
 import mysql.connector as mysql
 import json, hashlib, binascii, peewee
 from model.User import User
+from model.Friend import Friend
 from library.DatabaseConnection import DatabaseConnection
 import peewee, os
-
+import logging
+logger = logging.getLogger('peewee')
+logger.addHandler(logging.StreamHandler())
+logger.setLevel(logging.DEBUG)
 
 class UserController():
     # def __init__(self):
@@ -61,22 +65,99 @@ class UserController():
     #   1. userModels hobe User table er sob user jader email e friendName substring thake
     #   2. curentUser hobe jei user er currentSession= sessionId
     #   3. users
+    #   4. userNameAndEmail dic with keys name and email
     #   4. userModels er sob user er jonno:
     #       1. jodi user.email and currentUser.email soman na hoy:
     #           1. fullName = user.firstName + " " + user.lastName
-    #           2. users e append fullName
+    #           2. userNameAndEmail name key er value fullname
+    #           3. userNameAndEmail email key er value user.email
+    #           4. users e append userNameAndEmail
     #   5. return users
     def findUsersWithEmail(self, friendName, currentSession):
         userModels = User.select().where(User.email.contains(friendName))
         currentUser = User.get(User.currentSession == currentSession)
-        users = []
+        users = [currentUser.email]
         for user in userModels:
             if user.email != currentUser.email:
+                userNameAndEmail = {"name": "", "email": ""}
                 fullName = user.firstName + " " + user.lastName
-                users.append(fullName)
+                userNameAndEmail["name"] = fullName
+                userNameAndEmail["email"] = user.email
+                users.append(userNameAndEmail)
         return users
 
 
+    # for user in userModes:
+    # 1. user = eva@gmail.com object
+    #   1. if user.email != currentUser.email:
+    #   2. if 'eva@gmail.com' != currentUser.email:
+    #   3. if 'eva@gmail.com' != 'ayon@gmail.com':
+    #   4. if true:
+    #       1. fullName = user.firstName + " " + user.lastName
+    #       2. fullName = "Fahmida" + " " + user.lastName
+    #       3. fullName = "Fahmida" + " " + "Mahjabin"
+    #       4. fullName = "Fahmida Mahjabin"
+    #       5. userNameAndEmail["name"] = fullName
+    #       6. userNameAndEmail["name"] = "Fahmida Mahjabin"
+    #       7. x12345["name"] = "Fahmida Mahjabin"
+    #       8. userNameAndEmail["email"] = email
+    #       9. userNameAndEmail["email"] = "eva@gmail.com"
+    #       10. x12345["email"] = "eva@gmail.com"
+    #       10. userNameAndEmail = {"name": "Fahmida Mahjabin", "email" : "eva@gmail.com"}
+    #       11. users.append(userNameAndEmail)
+    #       12. users.append(x12345)
+    #       12. users = [x12345]
+    # 2. user = golam@gmail.com object
+    #   1. if user.email != currentUser.email:
+    #   2. if 'golam@gmail.com' != currentUser.email:
+    #   3. if 'golam@gmail.com' != 'ayon@gmail.com':
+    #   4. if true:
+    #       1. fullName = user.firstName + " " + user.lastName
+    #       2. fullName = "Golam" + " " + user.lastName
+    #       3. fullName = "Golam" + " " + "Muktadir"
+    #       4. fullName = "Golam Muktadir"
+    #       5. userNameAndEmail["name"] = fullName
+    #       6. userNameAndEmail["name"] = "Golam Muktadir"
+    #       7. x12345["name"] = "Golam Muktadir"
+    #       7. userNameAndEmail["email"] = email
+    #       8. userNameAndEmail["email"] = "golam@gmail.com"
+    #       10. x12345["email"] = "golam@gmail.com"
+    #       9. userNameAndEmail = {"name": "Golam Muktadir", "email" : "golam@gmail.com"}
+    #       10. users.append(userNameAndEmail)
+    #       12. users.append(x12345)
+    #       11. users = [x12345, x12345]
+
+    # for user in users:
+    #   print(user)
+
+    # loop1:
+    #   1. user = x12345
+    #   2. print(user)
+    #   3. print(x12345)
+    #   4. print({"name": "Golam Muktadir", "email" : "golam@gmail.com"})
+
+
+
+    # getUser
+    # input: sessionid
+    # return: found user object
+    # method:
+    #   return User.get(User.currentSession == currentSession)
+    def getUser(self, currentSession):
+        return User.get(User.currentSession == currentSession)
+
+
+    def addFriend(self, currentUserEmail, userToBeAdded):
+        currentUser = User.get(User.email == currentUserEmail)
+        requestedFriend = User.get(User.email == userToBeAdded)
+        friendRequest = Friend.create(user = currentUser.id, friend = requestedFriend.id, status = "requested")
+        friendRequest.save()
+        return ""
+
+
+    def getPendingRequests(self, currentSession):
+        currentUser = User.get(User.currentSession == currentSession)
+        
 # userController = UserController()
 # print(userController.authenticateUser("rakib@gmail.com","password"))
 # databaseConnection.create_tables([User])

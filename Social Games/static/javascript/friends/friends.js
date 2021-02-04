@@ -12,7 +12,7 @@ $(document).ready(function(){
     //      2. friendsBlock hobe row header, 1st column header, image and columnend
     //      3. friends empty string
     //      4. response object(eval(response)) er len porjonto iterate and friendNumber++:
-    //          1. friends += friendsBlock + column shuru + response[index] + column shesh + column shuru + addfreind + column shesh + column shuru + blockFriend + column shesh+ row shesh
+    //          1. friends += friendsBlock + column shuru + response[index]['name'] + column shesh + column shuru + addfreind(response[index]['email']) + column shesh + column shuru + blockFriend + column shesh+ row shesh
     //      5. friends id te friends boshabo page reload chara
     $("#searchFriend").click(function(){
         var friendName = $('#friendName').val();
@@ -21,28 +21,34 @@ $(document).ready(function(){
             url: '/getfriends',
             data: {name: friendName}
         }).done(function(response){
-            var friendNumber = 1
+            var currentUserEmail = eval(response)[0];
+            var friendNumber = 1;
             var friendsBlock = rowBlockHeader(friendNumber) + columnHeader() + imageBlock() + columnFooter();
             var friends = "";
-            for(var index = 0; index < eval(response).length; index++, friendNumber++){
-                friends += friendsBlock + columnHeader() + eval(response)[index] + columnFooter() + columnHeader() + button("addFriend","Add Friend") + columnFooter() + columnHeader() + button("blockFriend","Block") + columnFooter() + rowBlockFooter();
+            if (eval(response).length >=1){
+                for(var index = 1; index < eval(response).length; index++, friendNumber++){
+                    friends += friendsBlock + columnHeader() + eval(response)[index]["name"] + columnFooter() + columnHeader() + button(`${eval(response)[index]["email"]}`,"Add Friend", currentUserEmail, `${eval(response)[index]["email"]}`) + columnFooter() + columnHeader() + button("blockFriend","Block") + columnFooter() + rowBlockFooter();
+                }
             }
             $('#friends').html(friends);
         });
     });
-    // keno eikhane .click kaaj kore nai? keno .on korte hoise?
-    // addFriend id te on:
-    //  input: 'click',id addFriend, function definition
-    //      nijer parent(column) er parent(row) hide
-    $(document).on('click','#addFriend',function(){
-        // $("#pendingRequests").html($(this).parent().parent());
-        $(this).parent().parent().appendTo("#pendingRequests");
-        $(this).attr({
-            id: "removeFriend",
-        });
-        $(this).html("Remove");
-        // $(this).parent().parent().hide();
+    $.ajax({
+        method: 'GET',
+        url: 'getpendingrequests',
+        data: {}
+    }).done(function(response){
+        console.log(response);
     })
+        // $("#pendingRequests").html($(this).parent().parent());
+        // $(this).parent().parent().appendTo("#pendingRequests");
+        // $(this).attr({
+        //     id: "removeFriend",
+        // });
+        // $(this).html("Remove");
+        // $(this).parent().parent().hide();
+
+    // })
     $(document).on('click', '#removeFriend', function(){
         $(this).parent().parent().hide();
         $.ajax({
@@ -81,8 +87,8 @@ function lastNameBlock(){
     return 'Ayon';
 }
 
-function button(buttonId, buttonValue){
-    return `<button type = "button" id = ${buttonId} class = "w-70 btn btn-sm btn-primary">
+function button(buttonId, buttonValue, user, userToBeAdded){
+    return `<button type = "button" id = ${buttonId} onclick = "addFriend('${user}', '${userToBeAdded}')" class = "w-70 btn btn-sm btn-primary">
             ${buttonValue} </button>`;
 }
 
@@ -92,4 +98,20 @@ function columnFooter(){
 
 function rowBlockFooter(){
     return '</div>';
+}
+
+function addFriend(currentUserEmail, userToBeAdded){
+    console.log(currentUserEmail);
+    console.log(userToBeAdded);
+    $.ajax({
+        method: 'GET',
+        url: 'addfriend',
+        data: {
+            'currentUserEmail' : currentUserEmail,
+            'userToBeAdded' : userToBeAdded
+        }
+    }).done(function(response){
+        console.log("addfriend response:  ");
+        console.log(response);
+    })
 }

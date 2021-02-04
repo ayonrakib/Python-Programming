@@ -133,12 +133,34 @@ def friends():
         return render_template('friends/page.html')
 
 
+@app.route('/getcurrentuser')
+def getCurrentUser():
+    print("came here")
+    currentSession = request.cookies.get('currentSession')
+    currentUser = userController.getUser(currentSession)
+    return currentUser.email
+
 
 @app.route('/getfriends')
 def getFriends():
     name = request.args.get('name')
     currentSession = request.cookies.get('currentSession')
     return f"{userController.findUsersWithEmail(name, currentSession)}"
+
+
+@app.route('/getpendingrequests')
+def getPendingRequests():
+    currentSession = request.cookies.get('currentSession')
+    pendingRequests = userController.getPendingRequests(currentSession)
+    return ""
+
+
+@app.route('/addfriend')
+def addFriends():
+    currentUserEmail = request.args.get('currentUserEmail')
+    userToBeAdded = request.args.get('userToBeAdded')
+    userController.addFriend(currentUserEmail, userToBeAdded)
+    return ""
 
 
 @app.route('/remove')
