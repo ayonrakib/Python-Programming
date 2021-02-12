@@ -5,10 +5,10 @@ from library.DatabaseConnection import DatabaseConnection
 from model.User import User
 from controller.UserController import UserController
 import os, peewee
-import logging
-logger = logging.getLogger('peewee')
-logger.addHandler(logging.StreamHandler())
-logger.setLevel(logging.DEBUG)
+# import logging
+# logger = logging.getLogger('peewee')
+# logger.addHandler(logging.StreamHandler())
+# logger.setLevel(logging.DEBUG)
 
 
 app = Flask("Social Games", template_folder="templates", static_folder="", static_url_path="/")
@@ -53,20 +53,20 @@ def logIn():
                                 pageHeader = "Sign In",
                                 errorMessage = "",
                                 buttonValue = "Sign In")
-    response = redirect(url_for('friends'))
+    response = redirect(url_for('homePage'))
     return response
 
 
-@app.route('/userRegistration')
+@app.route('/user-registration')
 def userRegistration():
-    return render_template('user/userRegistration.html', 
-                            action = "validateRegistration", 
+    return render_template('user/user-registration.html', 
+                            action = "validate-registration", 
                             pageHeader = "Register", 
                             userFound = "",
                             buttonValue = "Register")
 
 
-@app.route('/validateRegistration', methods = ['POST','GET'])
+@app.route('/validate-registration', methods = ['POST','GET'])
 def registrationSuccessful():
     if request.method == 'POST':
         email = request.form['email']
@@ -75,15 +75,15 @@ def registrationSuccessful():
         lastName = request.form['lastName']
         foundUser = userController.findUserByEmail(email)
         if foundUser == "User found":
-            return render_template('user/userRegistration.html',
-                                    action = "validateRegistration", 
+            return render_template('user/user-registration.html',
+                                    action = "validate-registration", 
                                     pageHeader = "Register", 
                                     userFound = "User Found",
                                     buttonValue = "Register")
         elif foundUser == "User Not found":
             userController.createUserFromRegistrationForm(email, password, firstName, lastName)
-            return render_template('user/newUserCreated.html',
-                                    action="playgame",
+            return render_template('user/new-user-created.html',
+                                    action="home-page",
                                     pageHeader="Click to Play game",
                                     buttonValue="Play Game")
 
@@ -91,12 +91,10 @@ def registrationSuccessful():
 def setCurrentSession(currentSession, email):
     currentUser = User.get(User.email == email)
     if currentSession == "":
-        print(currentUser)
         currentUser.currentSession = ""
         currentUser.save()
     else:
         currentUser.currentSession = currentSession
-        print(currentUser.currentSession)
         currentUser.save()
 
 
@@ -112,7 +110,7 @@ def authenticate():
             response.set_cookie('currentSession',currentSession)
             setCurrentSession(currentSession, email)
             return response
-        return render_template('loginForm.html',
+        return render_template('user/page-login.html',
                                 action = "authenticate",
                                 pageHeader = "Sign in",
                                 errorMessage = "Failed to login!",
@@ -120,47 +118,46 @@ def authenticate():
         )
 
 
-@app.route('/homepage')
+@app.route('/home-page')
 def homePage():
-    return render_template('commons/homepage.html')
+    return render_template('commons/home-page.html')
 
 
 @app.route('/friends', methods = ['GET'])
 def friends():
     if request.method == 'GET':
         name = request.form.get('friendName')
-        print(name)
         return render_template('friends/page.html')
 
 
-@app.route('/getcurrentuser')
+@app.route('/get-current-user')
 def getCurrentUser():
-    print("came here")
     currentSession = request.cookies.get('currentSession')
     currentUser = userController.getUser(currentSession)
     return currentUser.email
 
 
-@app.route('/getfriends')
+@app.route('/get-friends')
 def getFriends():
-    name = request.args.get('name')
+    email = request.args.get('email')
     currentSession = request.cookies.get('currentSession')
-    return f"{userController.findUsersWithEmail(name, currentSession)}"
+    return f"{userController.findUsersWithEmail(email, currentSession)}"
 
 
-@app.route('/getpendingrequests')
+@app.route('/get-pending-requests')
 def getPendingRequests():
     currentSession = request.cookies.get('currentSession')
     pendingRequests = userController.getPendingRequests(currentSession)
-    return ""
+    return f"{pendingRequests}"
 
 
-@app.route('/addfriend')
+@app.route('/add-friend')
 def addFriends():
-    currentUserEmail = request.args.get('currentUserEmail')
-    userToBeAdded = request.args.get('userToBeAdded')
-    userController.addFriend(currentUserEmail, userToBeAdded)
-    return ""
+    currentUser = request.cookies.get('currentSession')
+    user_id = userController.getUserWithSessionId(currentUser)
+    friend_id = request.args.get('friend_id')
+    print(user_id, friend_id)
+    return f"{userController.addFriend(user_id, friend_id)}"
 
 
 @app.route('/remove')

@@ -4,10 +4,10 @@ from model.User import User
 from model.Friend import Friend
 from library.DatabaseConnection import DatabaseConnection
 import peewee, os
-import logging
-logger = logging.getLogger('peewee')
-logger.addHandler(logging.StreamHandler())
-logger.setLevel(logging.DEBUG)
+# import logging
+# logger = logging.getLogger('peewee')
+# logger.addHandler(logging.StreamHandler())
+# logger.setLevel(logging.DEBUG)
 
 class UserController():
     # def __init__(self):
@@ -51,6 +51,16 @@ class UserController():
             return "User Not found"
 
 
+    # getUserWithSessionId
+    # input: sessionId
+    # return: id of the found user, None if not
+    # method:
+    #   return user er id jeitar currentSession == sessionId
+    def getUserWithSessionId(self, sessionId):
+        user = User.get(User.currentSession == sessionId)
+        return user.id
+
+
     def createUserFromRegistrationForm(self, email, password, firstName, lastName):
         salt = str(os.urandom(20))
         currentSession = str(os.urandom(20))
@@ -64,26 +74,34 @@ class UserController():
     # method:
     #   1. userModels hobe User table er sob user jader email e friendName substring thake
     #   2. curentUser hobe jei user er currentSession= sessionId
-    #   3. users
-    #   4. userNameAndEmail dic with keys name and email
-    #   4. userModels er sob user er jonno:
+    #   3. users er 0 index hobe currentuser er email
+    #   4. userNameAndId dic with keys name and id
+    #   5. userModels er sob user er jonno:
     #       1. jodi user.email and currentUser.email soman na hoy:
     #           1. fullName = user.firstName + " " + user.lastName
-    #           2. userNameAndEmail name key er value fullname
-    #           3. userNameAndEmail email key er value user.email
-    #           4. users e append userNameAndEmail
-    #   5. return users
-    def findUsersWithEmail(self, friendName, currentSession):
-        userModels = User.select().where(User.email.contains(friendName))
+    #           2. userNameAndId name key er value fullname
+    #           3. userNameAndId email key er value user.email
+    #           4. users e append userNameAndId
+    #   6. return users
+    def findUsersWithEmail(self, email, currentSession):
+        userModels = User.select().where(User.email.contains(email))
         currentUser = User.get(User.currentSession == currentSession)
-        users = [currentUser.email]
+        users = [currentUser.id]
         for user in userModels:
             if user.email != currentUser.email:
-                userNameAndEmail = {"name": "", "email": ""}
+                userNameAndId = {"name": "", "id": "", "status": ""}
                 fullName = user.firstName + " " + user.lastName
-                userNameAndEmail["name"] = fullName
-                userNameAndEmail["email"] = user.email
-                users.append(userNameAndEmail)
+                try:
+                    friend = Friend.get(Friend.friend_id == user.id)
+                except peewee.DoesNotExist:
+                    friend = None
+                userNameAndId["name"] = fullName
+                userNameAndId["id"] = user.id
+                if friend is not None:
+                    userNameAndId["status"] = friend.status
+                else:
+                    userNameAndId["status"] = ""
+                users.append(userNameAndId)
         return users
 
 
@@ -97,14 +115,14 @@ class UserController():
     #       2. fullName = "Fahmida" + " " + user.lastName
     #       3. fullName = "Fahmida" + " " + "Mahjabin"
     #       4. fullName = "Fahmida Mahjabin"
-    #       5. userNameAndEmail["name"] = fullName
-    #       6. userNameAndEmail["name"] = "Fahmida Mahjabin"
+    #       5. userNameAndId["name"] = fullName
+    #       6. userNameAndId["name"] = "Fahmida Mahjabin"
     #       7. x12345["name"] = "Fahmida Mahjabin"
-    #       8. userNameAndEmail["email"] = email
-    #       9. userNameAndEmail["email"] = "eva@gmail.com"
+    #       8. userNameAndId["email"] = email
+    #       9. userNameAndId["email"] = "eva@gmail.com"
     #       10. x12345["email"] = "eva@gmail.com"
-    #       10. userNameAndEmail = {"name": "Fahmida Mahjabin", "email" : "eva@gmail.com"}
-    #       11. users.append(userNameAndEmail)
+    #       10. userNameAndId = {"name": "Fahmida Mahjabin", "email" : "eva@gmail.com"}
+    #       11. users.append(userNameAndId)
     #       12. users.append(x12345)
     #       12. users = [x12345]
     # 2. user = golam@gmail.com object
@@ -116,14 +134,14 @@ class UserController():
     #       2. fullName = "Golam" + " " + user.lastName
     #       3. fullName = "Golam" + " " + "Muktadir"
     #       4. fullName = "Golam Muktadir"
-    #       5. userNameAndEmail["name"] = fullName
-    #       6. userNameAndEmail["name"] = "Golam Muktadir"
+    #       5. userNameAndId["name"] = fullName
+    #       6. userNameAndId["name"] = "Golam Muktadir"
     #       7. x12345["name"] = "Golam Muktadir"
-    #       7. userNameAndEmail["email"] = email
-    #       8. userNameAndEmail["email"] = "golam@gmail.com"
+    #       7. userNameAndId["email"] = email
+    #       8. userNameAndId["email"] = "golam@gmail.com"
     #       10. x12345["email"] = "golam@gmail.com"
-    #       9. userNameAndEmail = {"name": "Golam Muktadir", "email" : "golam@gmail.com"}
-    #       10. users.append(userNameAndEmail)
+    #       9. userNameAndId = {"name": "Golam Muktadir", "email" : "golam@gmail.com"}
+    #       10. users.append(userNameAndId)
     #       12. users.append(x12345)
     #       11. users = [x12345, x12345]
 
@@ -146,18 +164,61 @@ class UserController():
     def getUser(self, currentSession):
         return User.get(User.currentSession == currentSession)
 
+    # addFriend
+    # input: currentuser, friend emails
+    # return: "", just add the request on the db
+    # method:
+    #   1. get currentuser object from email
+    #   2. get friend object from email
+    #   3. existingrequest = ei user and friend id db te exist kore kina
+    #   4. jodi existingrequest/status "requested" na hoy:
+    #       1. friend table e user, friend and requested status diye entry banabo
+    #       2. request save
+    #   5. return ""
+    def addFriend(self, user_id, friend_id):
+        print("came here")
+        try:
+            existingRequest = Friend.get(Friend.user_id == user_id and Friend.friend_id == friend_id)
+        # print(existingRequest.user_id)
+            if existingRequest.status == "requested":
+                print("already requested")
+                return "Friend request already sent"
+        except peewee.DoesNotExist:
+            friendRequest = Friend.create(user = user_id, friend = friend_id, status = "requested")
+            friendRequest.save()
+        return "Successfully sent friend request" 
 
-    def addFriend(self, currentUserEmail, userToBeAdded):
-        currentUser = User.get(User.email == currentUserEmail)
-        requestedFriend = User.get(User.email == userToBeAdded)
-        friendRequest = Friend.create(user = currentUser.id, friend = requestedFriend.id, status = "requested")
-        friendRequest.save()
-        return ""
+    # getUserNameWithId
+    # input: id
+    # return: user full name as string
+    # method:
+    #   1. user = User.get(User.id == id)
+    #   2. return user er firstName + user er lastName
+    def getUserNameWithId(self, id):
+        user = User.get(User.id == id)
+        return user.firstName + " " + user.lastName
 
 
+    # getpendingrequests
+    # input: currentsession, to get current logged in user
+    # return: the pending friend request object from friend table
+    # method:
+    #   1. currentsession diye current user khuje ber korbo
+    #   2. existingRequests hobe friend.select jeikhane friend table er user == currentuser , status == requested
+    #   3. existtingrequests er sob user er jonno:
+    #       3. print(user.friendid)
     def getPendingRequests(self, currentSession):
         currentUser = User.get(User.currentSession == currentSession)
-        
+        existingRequests = Friend.select().where(Friend.user_id == currentUser.id , Friend.status == "requested")
+        friendsRequested = []
+        for user in existingRequests:
+            userNameAndId = {"name": "", "id": ""}
+            name = self.getUserNameWithId(user.friend_id)
+            userNameAndId["name"] = name
+            userNameAndId["id"] = user.friend_id
+            friendsRequested.append(userNameAndId)
+        return friendsRequested 
+
 # userController = UserController()
 # print(userController.authenticateUser("rakib@gmail.com","password"))
 # databaseConnection.create_tables([User])

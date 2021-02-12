@@ -46,3 +46,6 @@ userController = UserController()
 # migrate(
 #     migrator.drop_column('User','isBlocked')
 # )
+
+status = Friend.get(Friend.user_id == 1 and Friend.friend_id == 55)
+print(status)
