@@ -4,9 +4,6 @@ $(document).ready(function(){
         var parentFruitLineNumber = $(this).parent().attr('id');
         console.log(parentFruitLineNumber);
     });
-    $("div").click(function(){
-        console.log("clicked on div");
-    })
 });
 
 function addFruit(){
