@@ -5,7 +5,7 @@ from model.Friend import Friend
 from model.GameTable import GameTable
 from model.MatchTable import MatchTable
 import os
-# from playhouse.migrate import *
+from playhouse.migrate import *
 
 databaseConnection = DatabaseConnection.getConnection()
 userController = UserController()
@@ -35,9 +35,9 @@ userController = UserController()
     # user5.save()
 
 # modifying table with columns
-# isBlocked = BooleanField(default=False)
-# database = MySQLDatabase("socialgames",host = "localhost", user = "root", password = "Hahaha01670", port = 3306)
-# migrator = MySQLMigrator(database)
+role = enumerate(default=False)
+database = MySQLDatabase("socialgames",host = "localhost", user = "root", password = "Hahaha01670", port = 3306)
+migrator = MySQLMigrator(database)
 
 # migrate(
 #     migrator.add_column('Friends','isBlocked', isBlocked)
@@ -47,5 +47,14 @@ userController = UserController()
 #     migrator.drop_column('User','isBlocked')
 # )
 
-status = Friend.get(Friend.user_id == 1 and Friend.friend_id == 55)
-print(status)
+# status = Friend.get(Friend.user_id == 1 and Friend.friend_id == 55)
+# print(status)
+
+# existingRequest = Friend.get(Friend.user_id == 2 and Friend.friend_id == 1)
+# print(existingRequest.id)
+# existingRequest.status = "requested"
+# existingRequest.save()
+
+migrate(
+    migrator.add_column()
+)

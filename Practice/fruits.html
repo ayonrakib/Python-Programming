@@ -5,8 +5,8 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.79.0">
-    <title>Signin Template · Bootstrap v5.0</title>
-
+    <title>Show Fruits</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -14,15 +14,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="manifest" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css/docs/5.0/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-    <link rel="icon" href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css/docs/5.0/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
 
 
@@ -48,46 +41,37 @@
     <!-- external js link -->
     <script src="js/showFruit.js">
     </script>
-    <script src="js/math.js">
-    </script>
   </head>
-  <body class="text-center">
+  <body>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4 rightAlineInputAndSubmit">
-              <div>
-                <div>
-                  <input type="text" id="fruitName">
-                </div>
-                <div>
-                  <button type="button" id="submitButton" onclick="showFruit()">
-                    Add Fruit
-                  </button>
-                </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-6">
 
+            </div>
+            <div class="col-md-6">
+              <div class="row insertFruitBlock">
+                <input type="text" class="form-control w-70" placeholder="Please insert fruit name" id="fruit">
+              </div>
+              <br>
+              <div class="row addFruitButtonBlock">
+                <button class="addFruitButton btn btn-primary btn-sm " type="submit" onclick="addFruit()">Add Fruit</button>
               </div>
             </div>
-            <div class="col-sm-1 alignBarMiddle">
-                <div class="bar">
-
-                </div>
-            </div>
-            <div class="col-sm-7 pushTextLeft">
-                <div id="fruitBlock">
-                  
-                </div>
-            </div>
-
+          </div>
         </div>
+        <div class="col-md-1">
+          <div class="midBar">
+
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="container" id = "showFruits">
+
+          </div>
+        </div>
+      </div>
+
     </div>
-    <br> <br>
-    <!-- <button id = "hideButton">
-      Hide Text
-    </button>
-    <div id = "hideElement">
-      Hide this element by clicking
-    </div>
-    <div id = "0">
-      This element is id 0
-    </div> -->
   </body>

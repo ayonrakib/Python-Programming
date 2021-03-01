@@ -151,6 +151,14 @@ def getPendingRequests():
     return f"{pendingRequests}"
 
 
+@app.route('/get-my-friends')
+def getMyFriends():
+    currentSession = request.cookies.get('currentSession')
+    user_id = userController.getUserWithSessionId(currentSession)
+    getMyFriends = userController.getMyFriends(user_id)
+    return f"{getMyFriends}"
+
+
 @app.route('/add-friend')
 def addFriends():
     currentUser = request.cookies.get('currentSession')
@@ -160,12 +168,44 @@ def addFriends():
     return f"{userController.addFriend(user_id, friend_id)}"
 
 
-@app.route('/remove')
+@app.route('/accept-friend')
+def acceptFrienRequest():
+    friend_id = request.args.get('friend_id')
+    currentUser = request.cookies.get('currentSession')
+    user_id = userController.getUserWithSessionId(currentUser)
+    return f"{userController.acceptFrienRequest(user_id, friend_id)}"
+
+
+@app.route('/remove-friend')
 def removefriends():
-    userWhoRemoved = request.args.get('userWhoRemoved')
     userToBeRemoved = request.args.get('userToBeRemoved')
-    return f"{[userWhoRemoved, userToBeRemoved]}"
+    currentUser = request.cookies.get('currentSession')
+    user_id = userController.getUserWithSessionId(currentUser)
+    return f"{userController.removefriend(user_id,userToBeRemoved)}"
     
+
+# block-friend
+# 1. current user nibo currentSession cookie theke
+# 2. args theke friend id nibo
+# 3. userController er blockFriend function call korbo with parameter current user id, friend id
+# 4. return true
+@app.route('/block-friend')
+def blockFriend():
+    currentUser = request.cookies.get('currentSession')
+    user_id = userController.getUserWithSessionId(currentUser)
+    friend_id = request.args.get('friend_id')
+    userController.blockFriend(user_id, friend_id)
+    return ""
+
+
+@app.route('/unblock-friend')
+def unblockFriend():
+    currentUser = request.cookies.get('currentSession')
+    user_id = userController.getUserWithSessionId(currentUser)
+    friend_id = request.args.get('friend_id')
+    userController.unblockFriend(user_id, friend_id)
+    return ""
+
 
 @app.route('/logout')
 def logOut():
