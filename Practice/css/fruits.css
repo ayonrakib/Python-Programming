@@ -4,12 +4,15 @@ body{
 .addFruitButton{
     width: 40%;
 }
+.midBarBlock{
+
+    display: flex;
+    justify-content: center;
+}
 .midBar{
     width: 10px;
     height: 150px;
     background-color: crimson;
-    display: flex;
-    justify-content: center;
 }
 .insertFruitBlock{
     display: flex;
@@ -18,4 +21,12 @@ body{
 .addFruitButtonBlock{
     display: flex;
     justify-content: center;
+}
+.showFruitBlock{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.crossIcon{
+    margin-right: 5px;
 }
