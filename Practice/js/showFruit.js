@@ -1,46 +1,70 @@
 $(document).ready(function(){
     // jekono cross icon e click korle
-    //      1. ei object er attribute id read korbo
+    //      1. fruitline e ei object er id nibo
     //      2. ei object er parent er parent ke hide
-    //      3. id attribute ke slice korbo and fruitLine er por sob read korbo, oitai hobe index jeita delete korte hobr
-    //      4. fruits[index] delete
-    //      5. log korbo current fruits
+    //      3. index hobe fruitline ke slice korbo "removeFruit" er por theke
+    //      4. fruits[index] list theke delete
+    //      5. log korbo fruits
+    //      6. modifiedFruits ke abar empty banabo
+    //      7. fruits er sob index er jonno:
+    //          1. jodi currentIndex index er soman na hoy and fruits[currentIndex] empty na hoy:
+    //              1. modifiedFruits e add korbo fruits[currentIndex]
+    //      8. fruits hobe modifiedFruits er soman
+    //      9. log korbo fruits
+    //      10. showUpdatedFruits()
     $(document).on('click','i', function(){
         var fruitLine = $(this).attr('id');
         $(this).parent().parent().hide();
         var index = fruitLine.slice(11);
         delete fruits[index];
-        console.log("After deleting",fruits);
+        console.log("After deleting: ",fruits);
+        modifiedFruits = [];
+        for(var currentIndex = 0; currentIndex < fruits.length; currentIndex++){
+            if ((currentIndex != index) && (fruits[currentIndex] != undefined)){
+                modifiedFruits.push(fruits[currentIndex]);
+            }
+        }
+        
+        fruits = modifiedFruits;
+        console.log("the modified correct fruits list is: " + fruits);
+        showUpdatedFruits();
     })
 });
 
-
-
-// function removeFruitLine(){
-//      1. jodi fruit id er value empty string na hoy:
-//          1. fruits e add fruit id er value
-//          2. log korbo current fruit list
-//          3. fruitLine empty string
-//          4. fruitLineNumber hobe -1
-//          5. fruits.length porjonto iterate 0th index theke:
-//              1. jodi fruits er current element undefined na hoy:
-//                  1. fruitLineNumber ++
-//                  2. fruitLineBanabo with cross icon and current fruits indexed string
-//          6. showFruits id te fruitLine html akare boshabo
+// addFruits
+// input: none
+// return: none
+// method:
+//      1. jodi fruit id er object er value empty string na hoy:
+//          1. fruits e push korbo fruit id object er value
+//          2. log korbo fruits
+//          3. showUpdatedFruits()
 function addFruit(){
     if($("#fruit").val() != ""){
         fruits.push($("#fruit").val());
         console.log("current fruit list: ",fruits);
-        var fruitLine = "";
-        var fruitLineNumber = -1;
-        for(var index = 0; index < fruits.length; index++){
-            if(fruits[index] != undefined){
-                fruitLineNumber += 1;
-                fruitLine += getShowFruitBlock(fruitLineNumber) + getCrossIcon(index) + "<div>" + fruits[index] + getDivEnding() + getDivEnding();
-            }
-        }
-        $("#showFruits").html(fruitLine);
+        showUpdatedFruits();
     }
+}
+
+// showUpdatedFruits
+// input: none
+// return: none, just show updated fruits
+// method:
+//      1. fruitLine empty string
+//      2. fruitlineNumber -1
+//      3. fruits er sob index er jonno:
+//          1. fruitLineNumber ++
+//          1. fruitLine += fruitBlock + cross icon + fruits[index] block;
+//      4. showFruits id er object e html akare boshabo fruitLine 
+function showUpdatedFruits(){
+    var fruitLine = "";
+    var fruitLineNumber = -1;
+    for(var index = 0; index < fruits.length; index++){
+            fruitLineNumber += 1;
+            fruitLine += getShowFruitBlock(fruitLineNumber) + getCrossIcon(index) + "<div>" + fruits[index] + getDivEnding() + getDivEnding();
+    }
+    $("#showFruits").html(fruitLine);
 }
 
 function getContainerHeader(){
@@ -64,3 +88,4 @@ function getDivEnding(){
 
 var fruits = [];
 
+var modifiedFruits = [];
