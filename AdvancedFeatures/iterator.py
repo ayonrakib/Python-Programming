@@ -9,43 +9,46 @@ while(True):
         break
 
 
-class GetWeight():
-    def __init__(self, finalWeight):
-        self.finalWeight = finalWeight
-        self.__iter__()
-    
+class Names():
+    def __init__(self, names):
+        self.names = names
+        self.index = 0
+
 
     def __str__(self):
         pass
 
 
     def __iter__(self):
-        self.initialWeight = 100
         return self
 
 
     def __next__(self):
-        if self.initialWeight <= self.finalWeight:
-            currentWeight = self.initialWeight
-            self.initialWeight += 1
-            return currentWeight
-        else:
+        if self.index == len(self.names):
+            self.index = 0
             raise StopIteration
+        currentIndex = self.index
+        self.index += 1
+        return self.names[currentIndex]
 
- 
-getWeight = GetWeight(105)
-iterateWeight = iter(getWeight)
+
+names = Names(["Ayon","eva","golam"])
+iterateNames = iter(names)
+
 
 while(True):
     try:
-        print(next(iterateWeight))
+        print(next(iterateNames))
     except StopIteration:
-        print("No more weights available")
+        print("No more names available")
         break
 
 while(True):
     try:
-        print(next(iterateWeight))
+        print(next(iterateNames))
     except StopIteration:
-        print("No more weights available")
+        print("No more names available")
         break
+
+for name in names:
+    print(name)

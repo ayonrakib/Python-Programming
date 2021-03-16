@@ -32,19 +32,20 @@ x = 10
 def getANewFunction():
     y = x + 10
     def getName():
+        print(hex(id(y)))
         return y
 
     return getName
 
 # print(getANewFunction)
 a = getANewFunction()
-print("a variable is:",a)
-print("value of a() is:",a())
+# print("a variable is:",a)
+# print("value of a() is:",a())
 x = 100
 b = getANewFunction()
-print("b variable is:",b)
+# print("b variable is:",b)
 print("y value for b variable is:",b())
-print("modified a variable is:",a)
+# print("modified a variable is:",a)
 print("modified a() value is:",a())
 # jokhon ekta function definition pabe, tokhon variable e notun function object banabe.
 
@@ -103,3 +104,11 @@ print("modified a() value is:",a())
 # 26. print("modified a() value is:",a())
 # 27. print("modified a() value is:",getName())
 # 27. print("modified a() value is:",110)
+
+
+def wrapper():
+    a = 10
+    print(hex(id(a)))
+
+# wrapper()
+# wrapper()
