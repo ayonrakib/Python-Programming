@@ -3,7 +3,7 @@ fh = open("romeo.txt")
 lst = list()
 for line in fh:
     # print(line)
-	line.rstrip()
+	lineWithoutSpaces = line.rstrip()
     
 #     print(lineWithoutSpaces)
 #     words = line.split()
