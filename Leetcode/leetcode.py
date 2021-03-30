@@ -302,4 +302,18 @@ def getSquareRoot(number):
     print(pairs)
 
 
-getSquareRoot(214748369)
+# getSquareRoot(214748369)
+
+# getLengthOfLastWord
+# input: s, string
+# return: length of last word in int
+# method:
+#   1. indexOfSpace= 0
+#   2. wordLength = 0
+#   3. s er sob index er jonno:
+#       1. jodi s[index] space/tab/newline hoy:
+#           1. spaceIndex = index
+#           2. infinite loop:
+#               1. spaceIndex++
+#               2. jodi  
+#               
