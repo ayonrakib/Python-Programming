@@ -1,4 +1,5 @@
-# import enum
+import enum
+import socket
 # # class Student():
 # #     counter = 0
 # #     collegeName = "NDC"
@@ -103,22 +104,92 @@
 #       1. jodi value > count hoy:
 #           1. name = key
 #           2. count = value
-#   7. print(name, count)
-namesToEmailCount = {}
-fileHandler = open(input("Please enter your file name: "))
-for line in fileHandler:
-    line.rstrip()
-    words = line.split()
-    if words != []:
-        if words[0] == "From":
-            if words[1] not in namesToEmailCount:
-                namesToEmailCount[words[1]] = 1
-            else:
-                namesToEmailCount[words[1]] += 1
-name = ""
-count = 0
-for key, value in namesToEmailCount.items():
-    if value > count:
-        name = key
-        count = value
-print(name, count)
+# #   7. print(name, count)
+# namesToEmailCount = {}
+# fileHandler = open(input("Please enter your file name: "))
+# for line in fileHandler:
+#     line.rstrip()
+#     words = line.split()
+#     if words != []:
+#         if words[0] == "From":
+#             if words[1] not in namesToEmailCount:
+#                 namesToEmailCount[words[1]] = 1
+#             else:
+#                 namesToEmailCount[words[1]] += 1
+# name = ""
+# count = 0
+# for key, value in namesToEmailCount.items():
+#     if value > count:
+#         name = key
+#         count = value
+# print(name, count)
+
+# Write a program to read through the mbox-short.txt and figure out the distribution by hour of the day for 
+# each of the messages. You can pull the hour out from the 'From ' line by 
+# finding the time and then splitting the string a second time using a colon.
+# From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+# Once you have accumulated the counts for each hour, print out the counts, sorted by hour as shown below.
+
+# findCountOfHour
+# input: nothing
+# return: nothing, just print the hour and count of hour
+# method:
+#   1. file name read korbo
+#   2. hourToCount empty dict
+#   3. result empty list
+#   4. file handler khulbo
+#   5. file handler er sob line er jonno:
+#       1. line er sob space uthabo
+#       2. line er propti ta word niye ekta list banabo
+#       3. jodi oigula empty list na hoy:
+#           1. : er index nibo
+#           2. index-2 theke index porjopnto slice korbo hour variable e
+#           3. results iterate korbo sob element er jonno:
+#               1. jodi hour element[0] er soman na hoy:
+#                   1. results e append (hour,1)
+#               2. noile:
+#                   1. element[1] += 1
+#   6. print result
+# hourToCount = {}
+# result = []
+# name = input("Please insert file name: ")
+# fileHandler = open(name)
+# for line in fileHandler:
+#     line.rstrip()
+    
+#     if line[0:4] == "From" and line[4] != ":":
+#         # print(line[0:4])
+#         try:
+#             index = line.index(":")
+#         except ValueError:
+#             continue
+#         # print(index)
+#         hour = line[index-2:index]
+#         if int(hour) < 10:
+#             hour = int("{:02}".format(int(hour)))
+#         else:
+#             hour = int(hour)
+#         print(hour)
+#         if hour not in hourToCount:
+#             hourToCount[hour] = 1
+#         else:
+#             hourToCount[hour] += 1
+
+
+# hourToCount = {k: v for k, v in sorted(hourToCount.items(), key=lambda item: item[0])}
+# for key, value in hourToCount.items():
+#     print(key, value)
+
+# print(type("{:05}".format(123)))
+
+newSocket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+newSocket.connect(('data.py4e.com',80))
+
+command = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode()
+newSocket.send(command)
+while(True):
+    data = newSocket.recv(512)
+    if (len(data) < 1):
+        break
+    print(data.decode())
+newSocket.close()
