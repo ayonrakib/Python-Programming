@@ -1,0 +1,13 @@
+body{
+    padding-top: 150px;
+}
+#addFruitButtonBlock, #addFruitInputBlock, #middleBarBlock{
+    display: flex;
+    justify-content: center;
+}
+
+#middleBar{
+    background-color: brown;
+    width: 10px;
+    height: 150px;
+}
