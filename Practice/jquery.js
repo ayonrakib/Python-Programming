@@ -35,5 +35,13 @@
 //         document.getElementById("p1").innerHTML = err;
 //     }
 // }
-var object1 = document.getElementById("dib1");
-console.log(object1);
+// var object1 = document.getElementById("dib1");
+// console.log(object1);
+
+$(document).ready(function(){
+    var clickNumber = 0;
+    $("#showClickNumberButton").on('click',function(){
+        clickNumber += 1;
+        $("#showClickNumberBlock").html(`Total click number: ${clickNumber}`);
+    })
+})
