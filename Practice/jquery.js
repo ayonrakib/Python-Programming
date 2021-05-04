@@ -39,9 +39,7 @@
 // console.log(object1);
 
 $(document).ready(function(){
-    var clickNumber = 0;
-    $("#showClickNumberButton").on('click',function(){
-        clickNumber += 1;
-        $("#showClickNumberBlock").html(`Total click number: ${clickNumber}`);
+    $("#hideParagraphButton").on('click',function(){
+        $("p").hide();
     })
 })
