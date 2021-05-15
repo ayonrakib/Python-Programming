@@ -36,6 +36,21 @@ $(document).ready(function(){
         // $("#showFruitBlock").html(fruitsLine);
         showFruits(fruits);
     })
+
+    // input fruit add button e click korle
+    // input: none
+    // return: none
+    // method:
+    //      1.
+    $("#inputFruitAddButton").on("click",function(){
+        var fruitName = $("#inputFruitAddText").val();
+        fruits.push(fruitName);
+        console.log("input fruit add button click => the fruits list is: ",fruits);
+    })
+    $("#modifiedFruitShowButton").on("click",function(){
+        var temporaryFruitsList = [...fruits];
+        console.log("modifiedFruitShowButton => temp fruits list is: ",temporaryFruitsList);
+    })
 })
 
 function getDivHeader(divClass){

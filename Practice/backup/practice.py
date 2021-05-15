@@ -1,5 +1,6 @@
-import enum
-import socket
+import enum, socket, array, sys, sysconfig, pickle
+
+from datetime import date
 # # class Student():
 # #     counter = 0
 # #     collegeName = "NDC"
@@ -182,14 +183,132 @@ import socket
 
 # print(type("{:05}".format(123)))
 
-newSocket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-newSocket.connect(('data.py4e.com',80))
+# newSocket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+# newSocket.connect(('data.py4e.com',80))
 
-command = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode()
-newSocket.send(command)
-while(True):
-    data = newSocket.recv(512)
-    if (len(data) < 1):
-        break
-    print(data.decode())
-newSocket.close()
+# command = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0/n/n'.encode()
+# newSocket.send(command)
+# while(True):
+#     data = newSocket.recv(512)
+#     if (len(data) < 1):
+#         break
+#     print(data.decode())
+# newSocket.close()
+
+# myArray = array.array('b',[1,2,3])
+# print(myArray)
+
+class Human():
+    def __init__(self, name) -> None:
+        self.name = name
+        self.hands = 2
+
+
+    def __str__(self) -> str:
+        return f"My name is {self.name}"
+
+
+    def walk(self):
+        return "I am walking!"
+
+
+# ayon = Human("ayon")
+# print(ayon)
+# ayon.walk()
+
+a = range(1,10)
+  
+# initializing a with xrange()
+# x = xrange(1,10000)
+  
+# testing the type of a
+# print ("The return type of range() is : ")
+# print (type(a))
+# print(a[1])
+  
+# testing the type of x
+# print ("The return type of xrange() is : ")
+# print (type(x))
+
+def pickle_data():
+    data = {
+                'name': 'Prashant',
+                'profession': 'Software Engineer',
+                'country': 'India'
+        }
+    filename = 'D:/PythonProgramming/Practice/backup/PersonalInfo.txt'
+    outfile = open(filename, 'wb')
+    pickle.dump(data,outfile)
+    outfile.close()
+pickle_data()
+
+
+def unpickling_data():
+    filename = 'D:/PythonProgramming/Practice/backup/PersonalInfo.txt'
+    file = open(filename,'rb')
+    new_data = pickle.load(file)
+    file.close()
+    return new_data
+
+
+# print(unpickling_data())
+
+names = ["ayon", "eva", "golam"]
+nextName = iter(names)
+# print( nextName)
+# for name in range(len(names)):
+#     print(next(nextName) )
+
+    # A simple generator function
+def my_gen():
+    n = 1
+    print('This is printed first')
+    # Generator function contains yield statements
+    yield n
+
+    n += 2
+    print('This is printed second')
+    yield n
+
+    n += 1
+    print('This is printed at last')
+    yield n
+myGenerator = my_gen()
+# print(next(myGenerator))
+# print(next(myGenerator))
+# print(next(myGenerator))
+# print(next(myGenerator))
+
+# a=array.array('d', [1.1 , 2.1 ,3.1] )
+# a.append(3.4)
+# print(a)
+# a.extend([4.5,6.3,6.8])
+# print(a)
+# a.insert(2,3.8)
+# print(a)
+
+   
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+       
+    # a class method to create a Person object by birth year.
+    @classmethod
+    def fromBirthYear(cls, name, year):
+        return cls(name, date.today().year - year)
+       
+    # a static method to check if a Person is adult or not.
+    @staticmethod
+    def isAdult(age):
+        return age > 18
+   
+person1 = Person('mayank', 21)
+person2 = Person.fromBirthYear('mayank', 1996)
+   
+print (person1.age)
+print (person2.age)
+   
+# print the result
+print (Person.isAdult(22))
+print(person1.fromBirthYear('mayank',30))
