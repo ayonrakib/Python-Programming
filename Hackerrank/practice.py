@@ -13,7 +13,7 @@
 # return: modulus of primary diagonal sum and secondary diagonal sum
 # method:
 #   1. primaryDiagonalSum and secondaryDiagonalSum 0
-#   2. n porjonto sob number er jonno:
+#   2. n porjonto sob number er jonno -> count:
 #       1. primaryDiagonalSum er sathe add arr[count][count]
 #   3. row = 0
 #   4. n theke shuru kore 0 porjonto sob column er jonno:
@@ -96,7 +96,7 @@ def getRatios(numbers):
 # return: # as stair case
 # method:
 #   1. stairCase empty string
-#   2. number porjonto iterate:
+#   2. number porjonto iterate -> count:
 #       1. number - count-2 porjonto iterate:
 #           1. stairCase e concat space
 #       2. 0 theke space porjonto iterate:
@@ -243,4 +243,56 @@ def getMilitaryTime(s):
     militaryTime += s[2:len(s)-2]
     return militaryTime
 
-print(getMilitaryTime("07:05:45PM"))
+# print(getMilitaryTime("07:05:45PM"))
+
+
+# HackerLand University has the following grading policy:
+
+# Every student receives a grade in the inclusive range from 0 to100 .
+# Any grade less than 40 is a failing grade.
+# Sam is a professor at the university and likes to round each student's grade according to these rules:
+
+# If the difference between the grade and the next multiple of 5 is less than 3, round grade up to the next multiple of 5.
+# If the value of grade is less than 40, no rounding occurs as the result will still be a failing grade.
+
+# Sample Input 0
+
+# 4
+# 73
+# 67
+# 38
+# 33
+
+# Sample Output 0
+# 
+# 75
+# 67
+# 40
+# 33
+# 4-> no grading, 73 -> 75 cause 2 diff, 67 -> 67 cause 3 diff from 70, 38 -> 40 cause 2 diff from 40. 33 -> 33 cause below 40
+
+
+# gradingStudents
+# input: grades as int
+# return: roundedGrade as int
+# method:
+#   1. roundedGrades []
+#   1. grades er sob grade er jonno:
+#       1. jodi grade < 38 hoy:
+#           1. skip
+#       2. othoba jodi grade mod 5 > 2 hoy:
+#           1. roundedGrades e append grade + 5 - grade mod 5
+#       3. else:
+#           1. roundedGrades e append grade
+
+
+def gradingStudents(grades):
+    roundedGrades = []
+    for grade in grades:
+        if grade < 38 or grade % 5 <= 2:
+            roundedGrades.append(grade)
+        elif grade % 5 > 2:
+            roundedGrades.append(grade + 5 - grade % 5)
+    return roundedGrades
+
+print(gradingStudents(94))
