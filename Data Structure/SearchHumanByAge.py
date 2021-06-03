@@ -1,32 +1,19 @@
-# FindHuman class
+# HumanFinder class
 # import humans ist class
 # constructor: a list,whose elements are 100 lists of human objects 
 # those nested lists are indexed according to age, so 100 lists
 # str: none
-from HumanList import HumanList
+from Human import Human
+from CreateHumans import CreateHumans
 
-class FindHuman():
+class HumanFinder():
     def __init__(self) -> None:
-        self.humans = self.createHumans()
+        humans = CreateHumans()
+        self.humans = humans.createHumans()
 
 
     def __str__(self) -> str:
         pass
-
-
-    # createHumans
-    # input: self
-    # return: list, contains 100 lists of human objects-each list index is the age of human objects
-    # method:
-    #   1. humansList empty list
-    #   2. 100 bar iterate korbo:
-    #       1. humansList e append empty list
-    #   3. return humansList
-    def createHumans(self):
-        humansList = []
-        for number in range(100):
-            humansList.append([])
-        return humansList
 
 
     # addHumansWithAge
@@ -53,9 +40,9 @@ class FindHuman():
         return self.humans[index]
 
 
-findHumans = FindHuman()
-human1 = HumanList("Ayon",30,210)
-human2 = HumanList("Ayon",30,210)
-findHumans.addHumansithAge(human1)
-findHumans.addHumansithAge(human2)
-print(findHumans.searchHumansWithAge(30))
+humanFinder = HumanFinder()
+human1 = Human("Ayon",30,210)
+human2 = Human("Ayon",30,210)
+humanFinder.addHumansithAge(human1)
+humanFinder.addHumansithAge(human2)
+print(humanFinder.searchHumansWithAge(30))

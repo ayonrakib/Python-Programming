@@ -1,0 +1,9 @@
+.twitterBody{
+    background-color: black;
+    color: white;
+    font-size: 23px;
+}
+a:hover{
+    color: red;
+    text-decoration: none;
+}

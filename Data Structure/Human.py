@@ -2,10 +2,10 @@
 # 100 ta var banano jabe na. kivabe banabo bair korbo. db table er moto grow korbe. 
 # search opn chalabo-seaerch by name age weight etc. 50 bosor er niche koyjon asse ber kore dao.
 
-# Human List Class
+# Human Class
 # properties: name, age,height
 # str:pass
-class HumanList():
+class Human():
     def __init__(self, name, age, height) -> None:
         self.name = name
         self.age = age
@@ -17,4 +17,4 @@ class HumanList():
 
 
 if __name__ == "__main__":
-    humans = HumanList()
+    humans = Human()
