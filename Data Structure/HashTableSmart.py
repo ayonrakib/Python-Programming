@@ -184,12 +184,13 @@ class HashTable():
         return values
 
 
-hashTable = HashTable(3)
-hashTable.addElement(0,1)
-hashTable.addElement(3,2)
-hashTable.addElement(1,3)
-hashTable.addElement(2,4)
-hashTable.addElement(5,7)
-print(hashTable.getTable())
-print(hashTable.getKeys())
-print(hashTable.getValues())
+if __name__ == "__main__":
+    hashTable = HashTable(3)
+    hashTable.addElement(0,1)
+    hashTable.addElement(3,2)
+    hashTable.addElement(1,3)
+    hashTable.addElement(2,4)
+    hashTable.addElement(5,7)
+    print(hashTable.getTable())
+    print(hashTable.getKeys())
+    print(hashTable.getValues())
