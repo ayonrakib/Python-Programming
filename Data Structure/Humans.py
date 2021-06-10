@@ -17,7 +17,7 @@ class Human():
         pass
 
 
-# HumansList class
+# HumanManagerWithAge class
 # properties: humans banabo HashTable class theke 100 input diye obj banaye 
 # method: searchByName, searchByAge, searchByWeight
 class HumanList():
