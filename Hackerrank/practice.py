@@ -278,12 +278,10 @@ def getMilitaryTime(s):
 # method:
 #   1. roundedGrades []
 #   1. grades er sob grade er jonno:
-#       1. jodi grade < 38 hoy:
-#           1. skip
+#       1. jodi grade < 38 hoy othoba grade mod 5 less than equal to 2 hoy:
+#           1. roundedGrades e append grade
 #       2. othoba jodi grade mod 5 > 2 hoy:
 #           1. roundedGrades e append grade + 5 - grade mod 5
-#       3. else:
-#           1. roundedGrades e append grade
 
 
 def gradingStudents(grades):

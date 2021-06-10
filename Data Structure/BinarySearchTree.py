@@ -122,7 +122,7 @@ class Node():
     #   eikhane list/tuple akare return korte parbo na, karon duitai replace kortesi na, ekta korbo, so alada alada value return korbo
     #   step2. search the node to replace with and its parent node
     #   step3. establish previousParentNode relation with nodeToBeReplaced node and parentOfNodeToBeReplaced er child none hobe
-    def delete(self, value):
+    # def delete(self, value):
 
 
 rootNode = Node(50)
