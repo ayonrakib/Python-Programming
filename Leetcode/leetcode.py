@@ -317,3 +317,47 @@ def getSquareRoot(number):
 #               1. spaceIndex++
 #               2. jodi  
 #               
+
+
+
+# Write a function to find the longest common prefix string amongst an array of strings.
+
+# If there is no common prefix, return an empty string "".
+
+# Example 1:
+
+# Input: strs = ["flower","flow","flight"]
+# Output: "fl"
+# Example 2:
+
+# Input: strs = ["dog","racecar","car"]
+# Output: ""
+# Explanation: There is no common prefix among the input strings.
+
+# Constraints:
+
+# 1 <= strs.length <= 200
+# 0 <= strs[i].length <= 200
+# strs[i] consists of only lower-case English letters.
+
+# getLongestPrefix
+# input: list of words, strs
+# return: length in int
+# method:
+#   1. highestCommonString ""
+#   2. currentCommonString ""
+#   3. index 0
+#   4. infinite loop:
+#       1. characterIndex 0 theke 199 porjonto iterate:
+#           1. wordIndex 0 theke 200 porjonto:
+#               1. try korbo:
+#                   1. jodi strs[wordIndex][characterIndex] = strs[wordIndex][characterIndex+1] hoy:
+#                       1. continue
+#                   2. else:
+#                       1. jodi wordIndex > 200 hoy:
+#                           1. 
+#               2. jodi index out of bound error khay:
+#                   1. break 
+#           2. break
+#       2. break
+#   5. return highestCommonString
