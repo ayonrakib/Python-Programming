@@ -37,9 +37,10 @@ class HumanList():
     #   2. self.humans er index e append korbo
     #   3. return self.humans
     def addHuman(self, human):
-        index = self.humans.getIndexFromInteger(human.age)
-        self.humans.getTable()[index].append(human)
-        return True 
+        # index = self.humans.getIndexFromInteger(human.age)
+        # self.humans.getTable()[index].append(human)
+        self.humans.addElement(human.age,human)
+        return True
 
 
     # searchByName
