@@ -3,7 +3,6 @@
 # faster karon proti ta index e iccha moton element rakha jabe.
 
 
-
 # class hashtable
 # constructor: self, tablesize
 # method:

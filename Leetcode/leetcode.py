@@ -326,7 +326,7 @@ def getSquareRoot(number):
 
 # Example 1:
 
-# Input: strs = ["flower","flow","flight"]
+# Input: strs = ["flower","flow","flight","f"]
 # Output: "fl"
 # Example 2:
 
@@ -340,24 +340,11 @@ def getSquareRoot(number):
 # 0 <= strs[i].length <= 200
 # strs[i] consists of only lower-case English letters.
 
+# end condition:
+# 1. jodi character match na kore
+# 2. jodi end of string paai
+
 # getLongestPrefix
 # input: list of words, strs
-# return: length in int
+# return: highest common substring
 # method:
-#   1. highestCommonString ""
-#   2. currentCommonString ""
-#   3. index 0
-#   4. infinite loop:
-#       1. characterIndex 0 theke 199 porjonto iterate:
-#           1. wordIndex 0 theke 200 porjonto:
-#               1. try korbo:
-#                   1. jodi strs[wordIndex][characterIndex] = strs[wordIndex][characterIndex+1] hoy:
-#                       1. continue
-#                   2. else:
-#                       1. jodi wordIndex > 200 hoy:
-#                           1. 
-#               2. jodi index out of bound error khay:
-#                   1. break 
-#           2. break
-#       2. break
-#   5. return highestCommonString

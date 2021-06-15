@@ -26,7 +26,20 @@ class HumanList():
 
 
     def __str__(self) -> str:
-        pass
+        return f"The human object is {self.humans.getTable()}"
+
+    
+    # addHuman
+    # input: self, human object
+    # return: true if added, false if not
+    # method:
+    #   1. index pabo object er getIndexFromInteger method theke with human er age as input
+    #   2. self.humans er index e append korbo
+    #   3. return self.humans
+    def addHuman(self, human):
+        index = self.humans.getIndexFromInteger(human.age)
+        self.humans.getTable()[index].append(human)
+        return True 
 
 
     # searchByName
@@ -44,5 +57,22 @@ class HumanList():
     # input: self, age
     # return: list of human objects whose age matches the input age
     # method:
-    #   1. index hobe age mod 100
-    #   2. return self.humans er indexth list
+    #   1. index pabo object er getIndexFromInteger method theke with human er age as input
+    #   2. return self.humans er table er indexth list
+    def searchByAge(self, age):
+        # if type(age) != "<class 'int'>":
+        #     raise Exception("The input age has to be an integer.")
+        index = self.humans.getIndexFromInteger(age)
+        return self.humans.getTable()[index]
+
+
+human1 = Human("Ayon",30,200)
+human2 = Human("Rakib",30,200)
+
+humans = HumanList()
+humans.addHuman(human1)
+humans.addHuman(human2)
+print(humans)
+print(humans.searchByAge(30))
+
+# print(type(30) == "<class 'int'>")
