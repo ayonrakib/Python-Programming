@@ -11,9 +11,9 @@
 #   call createemptytable
 class HashTable():
     def __init__(self, tableSize):
-        self.tableSize = tableSize
-        self.table = []
-        self.createEmptyTable()
+        self.__tableSize = tableSize
+        self.__table = []
+        self.__createEmptyTable()
 
 
     # str function
@@ -28,9 +28,9 @@ class HashTable():
     # method:
     #   tablesize porjonto iterate:
     #       table e empty list append
-    def createEmptyTable(self):
-        for number in range(self.tableSize):
-            self.table.append([])
+    def __createEmptyTable(self):
+        for number in range(self.__tableSize):
+            self.__table.append([])
     
 
     # get index hash function
@@ -38,8 +38,8 @@ class HashTable():
     # return: index as integer
     # method:
     #   return key mod tablesize
-    def getIndexFromInteger(self, key):
-        return key % self.tableSize
+    def __getIndexFromInteger(self, key):
+        return key % self.__tableSize
 
 
     # get index from character
@@ -50,11 +50,11 @@ class HashTable():
     #   key er proti ta character er jonno:
     #       totalIntegerValue += int value of character
     #   return int of totalIntegerValue mod tablesize
-    def getIndexFromString(self, key):
+    def __getIndexFromString(self, key):
         totalIntegerValue = 0
         for character in key:
             totalIntegerValue += ord(character)
-        return totalIntegerValue % self.tableSize
+        return totalIntegerValue % self.__tableSize
 
 
     # get table
@@ -63,7 +63,7 @@ class HashTable():
     # method:
     #   return table
     def getTable(self):
-        return self.table
+        return self.__table
 
 
     # add element
@@ -75,11 +75,11 @@ class HashTable():
     #   return true
     def addElement(self, key, value):
         if type(key) is int:
-            index = self.getIndexFromInteger(key)
+            index = self.__getIndexFromInteger(key)
         else:
-            index = self.getIndexFromString(key)
-        index = self.getIndexFromInteger(key)
-        self.table[index].append((key,value))
+            index = self.__getIndexFromString(key)
+        index = self.__getIndexFromInteger(key)
+        self.__table[index].append((key,value))
         return True
 
 
@@ -97,13 +97,13 @@ class HashTable():
     def delete(self, key, value):
         temporaryList = []
         if type(key) is int:
-            index = self.getIndexFromInteger(key)
+            index = self.__getIndexFromInteger(key)
         else:
-            index = self.getIndexFromString(key)
+            index = self.__getIndexFromString(key)
         for tuple in self.table[index]:
             if tuple[0] != key:
                 temporaryList.append(tuple)
-        self.table[index] = temporaryList
+        self.__table[index] = temporaryList
         return True
 
 
@@ -119,14 +119,29 @@ class HashTable():
     #   false
     def updateElement(self, key,value):
         if type(key) is int:
-            index = self.getIndexFromInteger(key)
+            index = self.__getIndexFromInteger(key)
         else:
-            index = self.getIndexFromString(key)
-        for tuple in self.table[index]:
+            index = self.__getIndexFromString(key)
+        for tuple in self.__table[index]:
             if tuple[0] == key:
                 tuple = ((key, value))
                 return True
         return False
+
+    
+    # public method search
+    # input: key as int
+    # return: list of tuples which matches the index of the key
+    # method:
+    #   1. jodi key int na hoy:
+    #       1. raise exception
+    #   2. index pabo private method getIndexFromInteger er input key hishebe
+    #   3. return korbo private property __table er index tomo list
+    def search(self, key):
+        if type(key) is not int:
+            raise Exception("The index has to be integer.")
+        index = self.__getIndexFromInteger(key)
+        return self.__table[index]
 
 
     # get pair
@@ -140,10 +155,10 @@ class HashTable():
     #   return false
     def getPair(self, key):
         if type(key) is int:
-            index = self.getIndexFromInteger(key)
+            index = self.__getIndexFromInteger(key)
         else:
-            index = self.getIndexFromString(key)
-        for tuple in self.table[index]:
+            index = self.__getIndexFromString(key)
+        for tuple in self.__table[index]:
             if tuple[0] == key:
                 return tuple
         return False
@@ -160,7 +175,7 @@ class HashTable():
     #   return keys
     def getKeys(self):
         keys = []
-        for keyValuePairs in self.table:
+        for keyValuePairs in self.__table:
             for keyValuePair in keyValuePairs:
                 keys.append(keyValuePair[0])
         return keys
@@ -177,7 +192,7 @@ class HashTable():
     #   return values
     def getValues(self):
         values = []
-        for keyValuePairs in self.table:
+        for keyValuePairs in self.__table:
             for keyValuePair in keyValuePairs:
                 values.append(keyValuePair[1])
         return values
@@ -190,6 +205,7 @@ if __name__ == "__main__":
     hashTable.addElement(1,3)
     hashTable.addElement(2,4)
     hashTable.addElement(5,7)
-    print(hashTable.getTable())
     print(hashTable.getKeys())
     print(hashTable.getValues())
+    print(hashTable.getTable())
+    print(hashTable.search(3))

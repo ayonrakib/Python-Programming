@@ -58,22 +58,23 @@ class HumanList():
     # input: self, age
     # return: list of human objects whose age matches the input age
     # method:
-    #   1. index pabo object er getIndexFromInteger method theke with human er age as input
-    #   2. return self.humans er table er indexth list
+    #   1. return korbo humans obj er search method with input as human age
     def searchByAge(self, age):
         # if type(age) != "<class 'int'>":
         #     raise Exception("The input age has to be an integer.")
-        index = self.humans.getIndexFromInteger(age)
-        return self.humans.getTable()[index]
+        return self.humans.search(age)
 
 
 human1 = Human("Ayon",30,200)
 human2 = Human("Rakib",30,200)
+human3 = Human("Eva",40,200)
 
 humans = HumanList()
 humans.addHuman(human1)
 humans.addHuman(human2)
+humans.addHuman(human3)
 print(humans)
 print(humans.searchByAge(30))
+print(humans.searchByAge(40))
 
 # print(type(30) == "<class 'int'>")

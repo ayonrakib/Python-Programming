@@ -29,6 +29,9 @@
 #   jei pair er sum target er soman hobe, oi dui indice return.
 #   if sum == target:
 #       return [index, position]
+from typing import final
+
+
 def getIndices(numbers, targetNumber):
     for position in range(len(numbers)):
         for index in range(position+1,len(numbers)):
@@ -348,3 +351,106 @@ def getSquareRoot(number):
 # input: list of words, strs
 # return: highest common substring
 # method:
+
+
+
+# You are given two non-empty linked lists representing two non-negative integers. 
+# The digits are stored in reverse order, and each of their nodes contains a single digit. 
+# Add the two numbers and return the sum as a linked list.
+
+# You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+# Input: l1 = [2,4,3], l2 = [5,6,4]
+# Output: [7,0,8]
+# Explanation: 342 + 465 = 807.
+
+# Example 2:
+# Input: l1 = [0], l2 = [0]
+# Output: [0]
+# Example 3:
+
+# Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+# Output: [8,9,9,9,0,0,0,1]
+ 
+# Constraints:
+
+# The number of nodes in each linked list is in the range [1, 100].
+# 0 <= Node.val <= 9
+# It is guaranteed that the list represents a number that does not have leading zeros.
+
+# addTwoNumbers
+# input: two lists
+# return: list
+# method:
+#   1. duita list er sobcheye kom length ta bair korbo
+#   2. lowest length porjonto index gula iterate:
+#       1. dui list er corresponding element and carryOver add korbo
+#       2. jodi sum > 10 hoy:
+#           1. final list e 0 append korbo
+#           2. carryOver e 1 assign korbo
+#       3. noile:
+#           1. final list e sum append
+#   3. jodi duita list er length same na hoy:
+#       1. higher length list er baki sob element er jonno:
+#           1. result hobe carryOver + current element
+#           2. jodi result >= 10 hoy:
+#               1. final list e append result - 10
+#               2. carryOver 1
+#           3. noile:
+#               1. final list e append result
+#               2. carryOver 0
+#   5. jodi carryOver 1 hoy:
+#       1. finalList e append 1
+#   4. return final list
+def addTwoNumbers(l1, l2):
+    if len(l1) < len(l2):
+        lowestLength = len(l1)
+    else:
+        lowestLength = len(l2)
+    carryOver = 0
+    finalList = []
+    for index in range(lowestLength):
+        addResult = carryOver + l1[index] + l2[index]
+        if addResult >= 10:
+            finalList.append(addResult - 10)
+            carryOver = 1
+        else:
+            finalList.append(addResult)
+    if len(l1) == len(l2):
+        return finalList
+    if len(l1) > len(l2):
+        for index in range(lowestLength, len(l1)):
+            addResult = carryOver + l1[index]
+            if addResult >= 10:
+                finalList.append(addResult - 10)
+                carryOver = 1
+            else:
+                finalList.append(addResult)
+                carryOver = 0
+    else:
+        for index in range(lowestLength, len(l2)):
+            addResult = carryOver + l2[index]
+            if addResult >= 10:
+                finalList.append(addResult - 10)
+                carryOver = 1
+            else:
+                finalList.append(addResult)
+                carryOver = 0
+    if carryOver == 1:
+        finalList.append(1)
+    return finalList
+
+# print(addTwoNumbers([9,9,9,9,9,9,9], [9,9,9,9]))
+
+# reverse order e ase.so l1 = [2,4,3], l2 = [5,6,4]
+# er mane: 1st number: 342, 2nd number 465
+
+# 1. l1 = [1,2], l2 = [3]
+# 2. if len(l1) < len(l2):
+# 3. if len([1,2]) < len(l2):
+# 4. if 2 < len(l2):
+# 5. if 2 < len([3]):
+# 6. if 2 < 1:
+# 7. if false:
+# 8. else:
+#   1. 
