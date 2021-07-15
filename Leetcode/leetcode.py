@@ -454,3 +454,93 @@ def addTwoNumbers(l1, l2):
 # 7. if false:
 # 8. else:
 #   1. 
+
+
+# 83. Remove Duplicates from Sorted List
+# Input: head = [1,1,2]
+# Output: [1,2]
+
+# Input: head = [1,1,2,3,3]
+# Output: [1,2,3]
+
+
+# removeDuplicates
+# input: head object
+# return: head node object
+# method:
+#   1. jodi head er value none hoy:
+#       1. return none
+#   2. currentNode hobe head er soman
+#   3. jotokkhon currentNode er next object er value none na hocche:
+#       1. jodi currentNode er value == currentNode.next er value:
+#           1. currentNode.next = currentNode.next.next
+#       2. currentNode = currentNode.next
+#   4. return head
+def removeDuplicates(head):
+    if head.val is None:
+        return None
+    currentNode = head
+    while(currentNode.next is not None):
+        if currentNode.val == currentNode.next.val:
+            currentNode.next = currentNode.next.next
+        currentNode = currentNode.next
+    return head
+
+# print(removeDuplicates([1,1,2,3,3]))
+# 1 = x123, 1 = x124, 2 = x125, 3 = x126, 3 = x127
+
+# head = object of node with value 1, x123
+#   1. if head.val is None:
+#   2. if x123.val is None:
+#   3. if 1 is None:
+#   4. if false:
+#   5. currentNode = head
+#   6. currentNode = x123
+#   7. while(currentNode.next is not None):
+#   8. while(x123.next is not None):
+#   9. while(node of 1 is not None):
+#   10. while(true):
+#       10.1. if currentNode.val == currentNode.next.val:
+#       10.2. if x123.val == currentNode.next.val:
+#       10.3. if 1 == currentNode.next.val:
+#       10.4. if 1 == x123.next.val:
+#       10.5. if 1 == x124.val:
+#       10.6. if 1 == 1:
+#       10.7. if true:
+#           10.1.1. currentNode.next = currentNode.next.next
+#           10.1.2. x123.next = currentNode.next.next
+#           10.1.3. x123.next = x123.next.next
+#           10.1.4. x123.next = x124.next
+#           10.1.5. x123.next = x125 (2 er node)
+#           10.1.6. currentNode = currentNode.next
+#           10.1.7. currentNode = x123.next
+#       10.8. currentNode = x125 (2 er node)
+#   11. while(currentNode.next is not None):
+#   12. while(x125.next is not None):
+#   13. while(x126, node of 3 is not None):
+#   14. while(true):
+#       14.1. if currentNode.val == currentNode.next.val:
+#       14.2. if x125.val == currentNode.next.val:
+#       14.3. if 2 == currentNode.next.val:
+#       14.4. if 1 == x125.next.val:
+#       14.5. if 1 == x126.val:
+#       14.6. if 1 == 3:
+#       14.7. if false:
+#       14.8. currentNode = currentNode.next
+#       14.9. currentNode = x125.next
+#       14.10. currentNode = x126
+#   15. while(currentNode.next is not None):
+#   16. while(x126.next is not None):
+#   17. while(x127, 3 er node is not None):
+#   18. while(true)
+#       18.1. if currentNode.val == currentNode.next.val:
+#       18.2. if x126.val == currentNode.next.val:
+#       18.3. if 3 == currentNode.next.val:
+#       18.4. if 3 == x126.next.val:
+#       18.5. if 3 == x127.val:
+#       18.6. if 3 == 3:
+#       18.7. if true:
+#           18.1.1. currentNode.next = currentNode.next.next
+#           18.1.2. x126.next = currentNode.next.next
+#           18.1.3. x126.next = x126.next.next
+#           18.1.4. x123.next = x127.next

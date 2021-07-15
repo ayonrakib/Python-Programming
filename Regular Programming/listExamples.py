@@ -1,59 +1,75 @@
+from math import trunc
 from random import randint
 # pylint: disable=unused-variable
+
+
+# isInputList -> naam hobe isList, jane na list input kina
+# input: random input
+# return: true if input is list, false if not
+# method:
+#   1. jodi input er type list hoy:
+#       1. return true
+#   2. return false
+def isInputList(randomInput):
+    if str(type(randomInput)) == "<class 'list'>":
+        return True
+    return False
+
+
 #1. sum of all lists
-def getSumOfNumbers(list):
-    if str(type(list)) != "<class 'list'>":
+def getSumOfNumbers(numbers):
+    if not isInputList(numbers):
         raise Exception("input is not a list")
     result = 0
-    for number in list:
+    for number in numbers:
         result += number
     return result
 
 
 #2. multiply of all lists
-def getMultiplicationOfNumbers(list):
-    if str(type(list)) != "<class 'list'>":
+def getMultiplicationOfNumbers(numbers):
+    if not isInputList(numbers):
         raise Exception("input is not a list")
     result = 1
-    for number in list:
+    for number in numbers:
         result *= number
     return result
 
     
 #3. get largest number in list
-def getLargestNumberFromList(list):
-    if str(type(list)) != "<class 'list'>":
+def getLargestNumberFromList(numbers):
+    if not isInputList(numbers):
         raise Exception("input is not a list")
-    if len(list) == 0:
+    if len(numbers) == 0:
         return []
-    largerNumber = list[0]
-    for index in range(1,len(list)):
-        if largerNumber<list[index]:
-            largerNumber = list[index]
+    largerNumber = numbers[0]
+    for index in range(1,len(numbers)):
+        if largerNumber<numbers[index]:
+            largerNumber = numbers[index]
     return largerNumber
 
 
 #4. get smallest number in list
-def getSmallestNumberFromList(list):
-    if str(type(list)) != "<class 'list'>":
+def getSmallestNumberFromList(numbers):
+    if not isInputList(numbers):
         raise Exception("input is not a list")
-    if len(list) == 0:
+    if len(numbers) == 0:
         return []
-    smallerNumber = list[0]
-    for index in range(1,len(list)):
-        if smallerNumber>list[index]:
-            smallerNumber = list[index]
+    smallerNumber = numbers[0]
+    for index in range(1,len(numbers)):
+        if smallerNumber>numbers[index]:
+            smallerNumber = numbers[index]
     return smallerNumber
 
 #5. Write a Python program to count the number of strings where the string length is 2 or more and the first and last character are same from a given list of strings.
 # Sample List : ['abc', 'xyz', 'aba', '1221']
 # Expected Result : 2
 
-def getNumberOfStringsWithSameFirstAndLastElement(list):
-    if str(type(list)) != "<class 'list'>":
+def getNumberOfStringsWithSameFirstAndLastElement(numbers):
+    if not isInputList(numbers):
         raise Exception("input is not a list")
     count=0
-    for element in list:
+    for element in numbers:
         if element[0] == element[len(element)-1]:
             count += 1
     return count
@@ -75,42 +91,42 @@ def getNumberOfStringsWithSameFirstAndLastElement(list):
 #               currenttuple = nexttuple
 #               nexttuple = temporarytuple
 #   return list
-def getSortedList(list):
-    if str(type(list)) != "<class 'list'>":
+def getSortedList(numbers):
+    if not isInputList(numbers):
         raise Exception("input is not a list")
     temporaryTuple = ()
-    for element in range(len(list)):
-        for index in range(len(list)-1):
-            if list[index][1] > list[index+1][1]:
-                temporaryTuple = list[index]
-                list[index] = list[index+1]
-                list[index+1] = temporaryTuple
-    return list
+    for element in range(len(numbers)):
+        for index in range(len(numbers)-1):
+            if list[index][1] > numbers[index+1][1]:
+                temporaryTuple = numbers[index]
+                numbers[index] = numbers[index+1]
+                numbers[index+1] = temporaryTuple
+    return numbers
 
 
 #7. Write a Python program to remove duplicates from a list.
-def removeDuplicatesFromList(list):
-    if str(type(list)) != "<class 'list'>":
+def removeDuplicatesFromList(numbers):
+    if not isInputList(numbers):
         raise Exception("input is not a list")
     uniqueElementList = []
-    for index in range(len(list)):
-        if list[index] not in uniqueElementList:
-            uniqueElementList.append(list[index])
+    for index in range(len(numbers)):
+        if numbers[index] not in uniqueElementList:
+            uniqueElementList.append(numbers[index])
     return uniqueElementList
 
 
 #8. Write a Python program to check a list is empty or not.
-def checkIfListIsEmpty(list):
-    if str(type(list)) != "<class 'list'>":
+def checkIfListIsEmpty(randomInput):
+    if not isInputList(randomInput):
         raise Exception("input is not a list")
-    if len(list) == 0:
+    if len(randomInput) == 0:
         return True
     return False  
 
 
 #9. Write a Python program to clone or copy a list
 def copyList(list):
-    if str(type(list)) != "<class 'list'>":
+    if not isInputList(list):
         raise Exception("input is not a list")
     # copiedList = list
     copiedList = []
@@ -121,7 +137,7 @@ def copyList(list):
 
 # 10. Write a Python program to find the list of words that are longer than n from a given list of words.
 def getListOfWordsGreatherThanN(list, n):
-    if str(type(list)) != "<class 'list'>":
+    if not isInputList(list):
         raise Exception("input is not a list")
     count = 0
     for word in list:
@@ -134,9 +150,9 @@ def getListOfWordsGreatherThanN(list, n):
 
 # 11. Write a Python function that takes two lists and returns True if they have at least one common member.
 def checkIfListsHaveCommonElement(list1, list2):
-    if str(type(list1)) != "<class 'list'>":
+    if not isInputList(list1):
         raise Exception("input list1 is not a list")
-    if str(type(list2)) != "<class 'list'>":
+    if not isInputList(list2):
         raise Exception("input list2 is not a list")
     for element in list1:
         if element in list2:
@@ -147,7 +163,7 @@ def checkIfListsHaveCommonElement(list1, list2):
 # Sample List : ['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow']
 # Expected Output : ['Green', 'White', 'Black']
 def removeSpecificIndexElements(list):
-    if str(type(list)) != "<class 'list'>":
+    if not isInputList(list):
         raise Exception("input is not a list")
     newList = []
     for index in range(len(list)):
@@ -200,7 +216,7 @@ def getThreeDimensionalMatrix():
 #           newList e add
 #   return newList
 def getListWithOddNumbers(list):
-    # if str(type(list)) != "<class 'list'>":
+    # if not isInputList(numbers):
     #     raise Exception("input is not a list")
     # for element in list:
     #     if str(type(element)) != "<class 'int'>":
