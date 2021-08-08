@@ -11,14 +11,18 @@
 # throw new InvalidEmployeeType(e.type);
 # }
 # }
+COMMISSIONED = 100
+HOURLY = 500
+SALARIED = 200
+
 
 def calculatePay(employee):
     try:
-        if employee.type == "COMMISSIONED":
+        if employee.type == COMMISSIONED:
             return calculateCommissionedPay(employee)
-        elif employee.type == "HOURLY":
+        elif employee.type == HOURLY:
             return calculateHourlyPay(employee) 
-        elif employee.type == "SALARIED":
+        elif employee.type == SALARIED:
             return calculateSalariedPay(employee)
     except InvalidEmployeeType:
         raise Exception("The employee type is invalid!")
