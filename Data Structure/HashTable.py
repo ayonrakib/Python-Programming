@@ -59,7 +59,7 @@ class HashTable():
     #   True
 # eivabe n order e search kora jabe na, hash function diye check korbo 
     def addElement(self, key, value):
-        if key is not int:
+        if type(key) != int:
             raise Exception("Key is not integer.")
         if key < 0:
             raise Exception("Key is negative.")
@@ -166,27 +166,27 @@ class HashTable():
         self.table[index] = ((None, None))
         return True
 
-    # test case 1: if key is not int?
+# test case 1: if key is not int?
 
-    # emptylist = []
-    # for tuple in self.table:
-    # for tuple in [(3, 2), (1, 2), (2, 2)]:
-    #   loop 1: tuple = (3,2)
-    #   1. if element[0] != tuple[0]:
-    #   2. if 2 != tuple[0]:
-    #   3. if 2 != 3:
-    #   4. if True:
-    #       1. emptylist.append(tuple)
-    #       2. emptylist.append((3,2))
-    #       3. emptylist = [(3,2)]
-    #   loop 2: tuple = (1,2)
-    #   1. if element[0] != tuple[0]:
-    #   2. if 2 != tuple[0]:
-    #   3. if 2 != 1:
-    #   4. if True:
-    #       1. emptylist.append(tuple)
-    #       2. emptylist.append((1,2))
-    #       3. emptylist = [(3,2),(1,2)]
+# emptylist = []
+# for tuple in self.table:
+# for tuple in [(3, 2), (1, 2), (2, 2)]:
+#   loop 1: tuple = (3,2)
+#   1. if element[0] != tuple[0]:
+#   2. if 2 != tuple[0]:
+#   3. if 2 != 3:
+#   4. if True:
+#       1. emptylist.append(tuple)
+#       2. emptylist.append((3,2))
+#       3. emptylist = [(3,2)]
+#   loop 2: tuple = (1,2)
+#   1. if element[0] != tuple[0]:
+#   2. if 2 != tuple[0]:
+#   3. if 2 != 1:
+#   4. if True:
+#       1. emptylist.append(tuple)
+#       2. emptylist.append((1,2))
+#       3. emptylist = [(3,2),(1,2)]
 hashTable = HashTable(3)
 print(hashTable.addElement(3,2))
 print(hashTable.addElement(2,4))

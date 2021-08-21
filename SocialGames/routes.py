@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request, make_response, redirect, url_for, jsonify
-import mysql.connector as mysql
-import hashlib, binascii, peewee
+import hashlib, binascii, peewee, os
 from library.DatabaseConnection import DatabaseConnection
 from model.User import User
 from controller.UserController import UserController
-import os, peewee
+
 # import logging
 # logger = logging.getLogger('peewee')
 # logger.addHandler(logging.StreamHandler())

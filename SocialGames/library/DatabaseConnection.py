@@ -1,5 +1,4 @@
 import peewee
-import mysql.connector as mysql
 
 
 class DatabaseConnection():

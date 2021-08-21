@@ -1,4 +1,3 @@
-import mysql.connector as mysql
 import json, hashlib, binascii, peewee
 from model.User import User
 from model.Friend import Friend
