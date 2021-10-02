@@ -47,146 +47,103 @@ def getIndices(numbers, targetNumber):
 # input: roman number as string
 # return: converted integer
 # method:
-#   temporaryString, result, currentIndex
-#   jotokkhon na currentIndex > len(romanNumber) hoy:
-#       temporaryString += romanNumber[currentIndex]
-#       jodi temporaryString == 'V':
-#           result e 5 add
-#           temporaryString = ''
-#           currentIndex ++
-#       othoba temporaryString == 'L':
-#           result e 50 add
-#           temporaryString = ''
-#           currentIndex ++
-#       othoba temporaryString == 'D':
-#           result e 500 add
-#           temporaryString = ''
-#           currentIndex ++
-#       othoba temporaryString == 'M':
-#           result e 1000 add
-#           temporaryString = ''
-#           currentIndex ++ 
-#       othoba temporaryString == 'I':
-#           jodi porer char V hoy:
-#               result += 4
-#               currentIndex += 2
-#               tempo = ""
-#           othoba porer char X hoy:
-#               result += 9
-#               currentIndex += 2
-#               tempo = ""
-#           noile:
-#               result += 1
-#               currentIndex += 1
-#               tempo = ""
-#       othoba temporaryString == 'X':
-#           jodi porer char L hoy:
-#               result += 40
-#               currentIndex += 2
-#               tempo = ""
-#           othoba porer char C hoy:
-#               result += 90
-#               currentIndex += 2
-#               tempo = ""
-#           noile:
-#               result += 10
-#               currentIndex += 1
-#               tempo = ""
-#       othoba temporaryString == 'C':
-#           jodi porer char D hoy:
-#               result += 400
-#               currentIndex += 2
-#               tempo = ""
-#           othoba porer char M hoy:
-#               result += 900
-#               currentIndex += 2
-#               tempo = ""
-#           noile:
-#               result += 100
-#               currentIndex += 1
-#               tempo = ""
-# def getIntFromRoman(romanNumber):
-#     currentIndex = 0
-#     temporaryString = ""
-#     result = 0
-#     while(currentIndex < len(romanNumber)):
-#         temporaryString += romanNumber[currentIndex]
-#         if temporaryString == "V":
-#             result += 5
-#             currentIndex += 1
-#             temporaryString == ""
-#         elif temporaryString == "L":
-#             result += 50
-#             currentIndex += 1
-#             temporaryString == ""
-#         elif temporaryString == "D":
-#             result += 500
-#             currentIndex += 1
-#             temporaryString == ""
-#         elif temporaryString == "M":
-#             result += 1000
-#             currentIndex += 1
-#             temporaryString == ""
-#         elif temporaryString == "I":
-#             if romanNumber[currentIndex+1] == "V":
-#                 result += 4
-#                 currentIndex += 2
-#                 temporaryString = ""
-#             elif romanNumber[currentIndex+1] == "X":
-#                 result += 9
-#                 currentIndex += 2
-#                 temporaryString = ""
-#             else:
-#                 result += 1
-#                 currentIndex += 1
-#                 temporaryString = ""
-#         elif temporaryString == "X":
-#             if romanNumber[currentIndex+1] == "L":
-#                 result += 40
-#                 currentIndex += 2
-#                 temporaryString = ""
-#             elif romanNumber[currentIndex+1] == "C":
-#                 result += 90
-#                 currentIndex += 2
-#                 temporaryString = ""
-#             else:
-#                 result += 10
-#                 currentIndex += 1
-#                 temporaryString = ""
-#         elif temporaryString == "C":
-#             if romanNumber[currentIndex+1] == "D":
-#                 result += 400
-#                 currentIndex += 2
-#                 temporaryString = ""
-#             elif romanNumber[currentIndex+1] == "M":
-#                 result += 900
-#                 currentIndex += 2
-#                 temporaryString = ""
-#             else:
-#                 result += 100
-#                 currentIndex += 1
-#                 temporaryString = ""
-#     return result
+#   1. ekta dict banabo with all the characters as keys and their corresponding numerals as values
+#   romanNumberToIntegerMapping = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+#   2. currentNumber = romanNumberToIntegerMapping[input[-1]]
+#   3. sum = currentNumber
+#   3. input er sobar 2nd most daan theke iterate:
+#       3.1. jodi currentChar er numeral value >= currentNumber hoy:
+#           3.1.1. sum += currentChar value
+#       3.2. noile:
+#           3.2.1. sum -= currentChar value
+#       3.3. currentNumber = currentChar er value
+#   4. return sum
+
+# print(getIntFromRoman("LVIII"))
 
 
-# take a char from right to left
-# if currentChar < previous:
-#   sum -= value of currentChar
-# else:
-#   sum += value of currentChar
+#   1. romanNumberToIntegerMapping
+#   2. currentNumber = romanNumberToIntegerMapping[input[-1]] = I value = 1
+#   3. sum = currentNumber = 1
+#   4. for.........
+#       4.1. 1st loop: index = -2
+#           4.1.1. jodi currentNumber 1 >= I er value 1:
+#               4.1.1.1. sum += 1 = 2
+#           4.1.2. currentnumber = I er value = 1
+#       4.2. 2nd loop: index = -3
+#           4.2.1. jodi currentNumber 1 >= I er value 1:
+#               4.2.1.1. sum += 1 = 3
+#           4.2.2. currentnumber = I er value = 1
+#       4.3. 1st loop: index = -4
+#           4.1.1. jodi currentNumber V >= I er value 1:
+#               4.1.1.1. sum += 5 = 8
+#           4.1.2. currentnumber = V er value = 5
+#       4.4. 1st loop: index = -5
+#           4.1.1. jodi currentNumber L 50 >= I er value 1:
+#               4.1.1.1. sum += 50 = 58
+#           4.1.2. currentnumber = L er value = 50
+#   
 
-# print(getIntFromRoman("III"))
+# print(getIntFromRoman("LVIII"))
 def getIntFromRoman(romanNumber):
     romanNumberToIntegerMapping = {"I":1, "V":5, "X":10, "L":50, "C":100, "D":500, "M":1000}
-    sum = 0
-    for index in range(-1, -(len(romanNumber)-1), -1):
-        if romanNumberToIntegerMapping[romanNumber[index]] < romanNumberToIntegerMapping[romanNumber[index-1]]:
-            sum -= romanNumberToIntegerMapping[romanNumber[index]]
-        else:
+    currentNumber = romanNumberToIntegerMapping[romanNumber[-1]]
+    sum = currentNumber
+    print(sum)
+    for index in range(-2, -(len(romanNumber)+1), -1):
+        if romanNumberToIntegerMapping[romanNumber[index]] >= currentNumber:
             sum += romanNumberToIntegerMapping[romanNumber[index]]
+        else:
+            sum -= romanNumberToIntegerMapping[romanNumber[index]]
+        currentNumber = romanNumberToIntegerMapping[romanNumber[index]]
     return sum
 
-# print(getIntFromRoman('LVIII'))
+print(getIntFromRoman('MCMXCIV'))
+
+# 1. romanNumberToIntegerMapping = {"I":1, "V":5, "X":10, "L":50, "C":100, "D":500, "M":1000}
+# 2. sum = 0
+# 3. for index in range(-1, -(len(romanNumber)), -1):
+# 3. for index in range(-1, -(len("LVIII")), -1):
+# 4. for index in range(-1, -5, -1):
+#   4.1. 1st loop: index = -1
+#       4.1.1. if romanNumberToIntegerMapping[romanNumber[index]] >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.1.2. if romanNumberToIntegerMapping[romanNumber[-1]] >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.1.3. if romanNumberToIntegerMapping["I"] >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.1.4. if 1 >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.1.5. if 1 >= romanNumberToIntegerMapping[romanNumber[-2]]:
+#       4.1.6. if 1 >= romanNumberToIntegerMapping["I"]:
+#       4.1.7. if 1 >= 1:
+#           4.1.7.1. sum += romanNumberToIntegerMapping[romanNumber[index]]
+#           4.1.7.2. sum += romanNumberToIntegerMapping[romanNumber[-1]]
+#           4.1.7.3. sum += romanNumberToIntegerMapping["I"]
+#           4.1.7.4. sum += 1
+#           4.1.7.5. sum = 1
+#   4.2. 2nd loop: index = -2
+#       4.2.1. if romanNumberToIntegerMapping[romanNumber[index]] >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.2.2. if romanNumberToIntegerMapping[romanNumber[-2]] >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.2.3. if romanNumberToIntegerMapping["I"] >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.2.4. if 1 >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.2.5. if 1 >= romanNumberToIntegerMapping[romanNumber[-3]]:
+#       4.2.6. if 1 >= romanNumberToIntegerMapping["I"]:
+#       4.2.7. if 1 >= 1:
+#           4.2.7.1. sum += romanNumberToIntegerMapping[romanNumber[index]]
+#           4.2.7.2. sum += romanNumberToIntegerMapping[romanNumber[-2]]
+#           4.2.7.3. sum += romanNumberToIntegerMapping["I"]
+#           4.2.7.4. sum += 1
+#           4.2.7.5. sum = 2
+#   4.3. 3rd loop: index = -3
+#       4.2.1. if romanNumberToIntegerMapping[romanNumber[index]] >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.2.2. if romanNumberToIntegerMapping[romanNumber[-3]] >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.2.3. if romanNumberToIntegerMapping["I"] >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.2.4. if 1 >= romanNumberToIntegerMapping[romanNumber[index-1]]:
+#       4.2.5. if 1 >= romanNumberToIntegerMapping[romanNumber[-4]]:
+#       4.2.6. if 1 >= romanNumberToIntegerMapping["V"]:
+#       4.2.7. if 1 >= 5:
+#       4.2.8. else:
+#           4.2.8.1. sum -= romanNumberToIntegerMapping[romanNumber[index]]
+#           4.2.8.2. sum -= romanNumberToIntegerMapping[romanNumber[-3]]
+
+
 
 # binaryAdd
 # input: two string
