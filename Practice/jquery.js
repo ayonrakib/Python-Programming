@@ -38,8 +38,3 @@
 // var object1 = document.getElementById("dib1");
 // console.log(object1);
 
-$(document).ready(function(){
-    $("#hideParagraphButton").on('click',function(){
-        $("p").hide();
-    })
-})

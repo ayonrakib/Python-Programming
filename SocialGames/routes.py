@@ -16,7 +16,7 @@ userController = UserController()
 # naming convention sobkhane projojjo. eikhane ami likhsi loginForm, but eita form na, pura page. so naam thik korte hobe
 # input validation sob backend e thakbe, frontend eo.
 # jeigula page geenrate kore, sheigula page. baad baki sob-form, shoho ja ase sob components e thake.
-# re usbale page gula ektai layout thakbe. conditional statement diye korte hobe. 
+# re usbale page gula ektai layout thakbe. conditional statement diye korte hobe.
 # jodi relative import hoy, taile proti ta file tar current directory er baire jabe na. so relative import kora jabe na.
 # by default current directory = jei script execute kortesi sheitar directory
 # so, relative import er jaygay baire setup.py file rakhte hobe.
