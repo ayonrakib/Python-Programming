@@ -101,6 +101,7 @@ def findElement(nums, target):
 
 
 # n and 1 er average bair korbo
+# maximum good version 1
 # jodi average n er soman hoy:
 #   jodi avg bad hoy:
 #       return avg
@@ -111,3 +112,19 @@ def findElement(nums, target):
 #   recursive call with current maximum good version +1
 # jodi avg bad hoy:
 #   current minimum bad version hocche avg
+
+# loop diye korte hobe, recursive call diye hobe na
+def firstBadVersion(n):
+    maximumGoodVersion = 1
+    average = ( n + 1 ) // 2
+    if average == n:
+        if isBadVersion(average):
+            return average
+        else:
+            return -1
+    if isBadVersion(average):
+        maximumGoodVersion = average
+        firstBadVersion(maximumGoodVersion, n)
+    elif (isBadVersion(average) is False):
+        currentMinimumBadVersion = average
+        firstBadVersion(maximumGoodVersion, currentMinimumBadVersion)
