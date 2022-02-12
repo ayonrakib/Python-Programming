@@ -4,6 +4,8 @@ from flask_cors import CORS
 import boto3, os
 from botocore.exceptions import ClientError
 from werkzeug.utils import secure_filename
+from dotenv import load_dotenv
+load_dotenv()
 
 UPLOAD_FOLDER = 'D:/Coding/PythonProgramming/fullStack/back-end/static/files'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', '.js'}
@@ -18,15 +20,15 @@ CORS(app)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-app.config['S3_BUCKET'] = "ayonbucket"
-app.config['S3_KEY'] = "AKIA2AV63QNIZNYTTM4I"
-app.config['S3_SECRET'] = "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"
-app.config['S3_LOCATION'] = 'arn:aws:s3:::ayonbucket'
+app.config['S3_BUCKET'] = os.getenv('S3_BUCKET') 
+app.config['S3_KEY'] = os.getenv('S3_KEY') 
+app.config['S3_SECRET'] = os.getenv('S3_SECRET') 
+app.config['S3_LOCATION'] = os.getenv('S3_LOCATION') 
 
 s3 = boto3.client(
     's3',
-    aws_access_key_id="AKIA2AV63QNIZNYTTM4I",
-    aws_secret_access_key="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"
+    aws_access_key_id=os.getenv('S3_KEY') ,
+    aws_secret_access_key=os.getenv('S3_SECRET')
 )
 
 
