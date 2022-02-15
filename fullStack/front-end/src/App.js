@@ -5,11 +5,23 @@ import {Input, Form, Button, Container} from 'react-bootstrap'
 
 import {useState, useEffect, useReducer} from 'react';
 
+
+function reducer(state, action){
+  console.log("arrived in reducer method!");
+  console.log("state at first is: ",state);
+
+  switch(action.name){
+    case "fileName":
+      return {...state, value : action.data.value}
+  }
+    return state
+}
+
 function App() {
   const [name, setName] = useState("ayon!");
   const [number, setNumber] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [state, dispatch] = useReducer(reducer, {files : [], value : ""})
 
   useEffect(() => {
     axios({
@@ -76,7 +88,26 @@ function App() {
     } catch (error) {
       console.error(error)
     }
-    
+  }
+
+
+  async function searchFile(event){
+    event.preventDefault();
+    try{
+      const files = await axios({
+        method: "POST",
+        url: "http://127.0.0.1:5000/search-files"
+      });
+      console.log("files from search files are: ", files);
+    }
+    catch (error){
+      console.error(error);
+    }
+  }
+
+
+  function handleInput(e){
+    dispatch({ name: "fileName", data: { value : e.target.value } })
   }
 
   return (
@@ -102,7 +133,10 @@ function App() {
         <button>Upload</button>
       </form>
       <button onClick={createBucket}>Create bucket</button>
-      
+      <form onSubmit={searchFile}>
+        <input value={state} name="fileName" onChange={(e) => handleInput(e)}></input>
+        <button>Search file</button>
+      </form>
     </div>
   );
 }

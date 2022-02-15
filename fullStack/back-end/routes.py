@@ -1,6 +1,4 @@
 
-
-from fileinput import filename
 from flask import Flask, request
 from flask_cors import CORS
 import boto3, os
@@ -33,10 +31,10 @@ s3 = boto3.client(
 )
 
 
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 @app.route("/")
 def home():
@@ -69,8 +67,6 @@ def uploadInS3():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-
             print("s3 obj is: ",s3)
             try:
                 response = s3.upload_file(UPLOAD_FOLDER + "/" + f"{filename}", "ayonbucket", f"{filename}")
@@ -140,6 +136,22 @@ def downloadFile():
                 return "file was downloaded!"
         return "file was not found!"
         
+
+@app.route("/search-files", methods = ["POST"])
+def searchFile():
+    if request.method == "POST":
+        data = request.get_json()
+        print("data is: ",data)
+        files = getFiles()
+        # print("files in search files url are: ",files)
+        matchedFileNames = {}
+        fileNumber = 1
+        for fileName in files.values():
+            modifiedFileName = fileName[0:fileName.find(".")]
+            if data['name'] in modifiedFileName:
+                matchedFileNames[f"file{fileNumber}"] = fileName
+                fileNumber += 1
+        return matchedFileNames
 
 
 if __name__ == "__main__":
