@@ -8,11 +8,13 @@ import {useState, useEffect, useReducer} from 'react';
 
 function reducer(state, action){
   console.log("arrived in reducer method!");
-  console.log("state at first is: ",state);
+  console.log("state at reducer is: ",state);
 
   switch(action.name){
     case "fileName":
-      return {...state, value : action.data.value}
+      return {...state, fileName : action.data.fileName}
+    case "foundFiles":
+      return {...state, files: action.data.files }
   }
     return state
 }
@@ -21,8 +23,15 @@ function App() {
   const [name, setName] = useState("ayon!");
   const [number, setNumber] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [state, dispatch] = useReducer(reducer, {files : [], value : ""})
-
+  const [state, dispatch] = useReducer(reducer, {files : [], fileName : ""})
+  console.log("state at first render is: ",state);
+  var fileBlock = []
+  var myDictionary = {"name" : "ayon", "age" : 30}
+  for (let key in myDictionary) {
+    let value = myDictionary[key];
+    // Use `key` and `value`
+    console.log(`key value is ${key} and value is ${value}`)
+}
   useEffect(() => {
     axios({
       method: "GET",
@@ -34,6 +43,11 @@ function App() {
     })
   },[])
 
+  // const object = {'a': 1, 'b': 2, 'c' : 3};
+
+  // for (const [key, value] of Object.entries(object)) {
+  //   console.log(key, value);
+  // }
 
   function getSquare(e){
     e.preventDefault();
@@ -93,26 +107,40 @@ function App() {
 
   async function searchFile(event){
     event.preventDefault();
+    console.log("state in searchFile method is: ",state)
     try{
-      const files = await axios({
+      const matchedFiles = await axios({
         method: "POST",
-        url: "http://127.0.0.1:5000/search-files"
+        url: "http://127.0.0.1:5000/search-files",
+        data: state
       });
-      console.log("files from search files are: ", files);
+      console.log("files from search files are: ", matchedFiles);
+      dispatch({ name: "foundFiles", data: { files: matchedFiles} })
     }
     catch (error){
       console.error(error);
     }
+      console.log("state after saving searched files: ",state)
   }
 
 
   function handleInput(e){
-    dispatch({ name: "fileName", data: { value : e.target.value } })
+    dispatch({ name: "fileName", data: { fileName : e.target.value } })
   }
 
+  if(state.files.data != undefined){
+    for ( let key in state.files.data ){
+      console.log("state.files.data is: ",state.files.data)
+      console.log("current key value pair is: ",key, state.files.data[key]);
+      fileBlock.push(<li><div> {key} : {state.files.data[key]} </div></li>)
+    }
+    var allFilesBlock = <ul>{fileBlock}</ul>;
+    dispatch({ name: "foundFiles", data : { files: allFilesBlock } })
+  }
+  console.log("state before rendering is: ",state)
   return (
     <div className="App">
-      hello world!
+      {/* hello world!
       <br></br>
       {name}
       <Container>
@@ -126,17 +154,21 @@ function App() {
           </Button>
         </Form>
       </Container>
-      The number you have entered is: {number}
+      The number you have entered is: {number} */}
       <br></br>
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileUpload}></input>
         <button>Upload</button>
       </form>
+      <br></br>
       <button onClick={createBucket}>Create bucket</button>
+      <br></br>
+      <br></br>
       <form onSubmit={searchFile}>
-        <input value={state} name="fileName" onChange={(e) => handleInput(e)}></input>
+        <input value={state.fileName} name="fileName" onChange={(e) => handleInput(e)}></input>
         <button>Search file</button>
       </form>
+      {state.files}
     </div>
   );
 }

@@ -142,13 +142,15 @@ def searchFile():
     if request.method == "POST":
         data = request.get_json()
         print("data is: ",data)
+        if data["fileName"] == "":
+            return {}
         files = getFiles()
         # print("files in search files url are: ",files)
         matchedFileNames = {}
         fileNumber = 1
         for fileName in files.values():
             modifiedFileName = fileName[0:fileName.find(".")]
-            if data['name'] in modifiedFileName:
+            if data['fileName'] in modifiedFileName:
                 matchedFileNames[f"file{fileNumber}"] = fileName
                 fileNumber += 1
         return matchedFileNames
